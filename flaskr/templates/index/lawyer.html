@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+
+		<!-- Three -->
+			<section id="three" class="wrapper">
+				<div class="inner">
+					<header class="align-center">
+						<h2>About Our Lawyer</h2>
+						<p>저희 법인의 변호사들을 소개합니다</p>
+					</header>
+					<div class="flex">
+						<article>
+							<div class="card mb-3" style="max-width: 100%;">
+							  <div class="row no-gutters">
+							    <div class="col-md-4">
+								  <img id="profile_img_jinu" src="{{ url_for('static', filename='images/profile_jinu01.jpeg') }}" class="card-img" alt="...">
+								  <div class="card">
+								  	<p class="profile-contact">이메일 : <a href="#">jinu0720@naver.com</a><br /> 전화 : 010-xxxx-xxxx</p>
+								  </div>
+								</div>								
+							    <div class="col-md-8">
+							      <div class="card-body">
+							        <h5 class="card-title">박진우 대표변호사</h5>
+							        <p class="card-text">안녕하세요 박진우 변호사입니다. 의뢰인의 소중한 권리를 위해 최선을 다하겠습니다.</p>
+							        <table>
+							        	<thead>
+							        		<th class="table-header-font">학 력</th>
+							        	</thead>
+							        	<tbody>
+							        		<td>
+												<span class="profile-span">연세대학교 법학과 학사</span><br>
+												<span class="profile-span">경희대학교 법학전문대학원 석사</span>	
+							        		</td>							        		
+							        	</tbody>
+							        	<thead>
+							        		<th class="pad-up-profile-table table-header-font">경 력</th>
+							        	</thead>
+							        	<tbody>
+							        		<td>
+												<span class="profile-span">법무법인 이래</span><br>
+												<span class="profile-span" >법무법인 명천</span>	<br>
+												<span class="profile-span">법무법인 신사(現)</span>	<br><br>
+												<span class="profile-span">대한변호사협회 부동산전문변호사</span><br>
+												<span class="profile-span">대한변호사협회 북한이탈주민 법률지원위원회 위원</span><br>
+												<span class="profile-span profile-letterspacing">더불어민주당 제20대 국회의원선거 선거대책위원회 법률지원단 자문위원</span><br>
+												<span class="profile-span">방배중학교 학교폭력대책자치위원 및 명예교사</span><br>
+												<span class="profile-span">서울특별시교육청 주민참여예산위원</span><br>
+												<span class="profile-span">대법원 국선변호인</span>
+							        		</td>							        		
+							        	</tbody>							        	
+							        </table>							        
+							      </div>
+							    </div>
+							  </div>
+							  <footer>
+									<a href="#" class="button special btn-win">주요 승소사례</a>					
+								</footer>
+							</div>												
+						</article>
+						<article>
+
+							<div class="card mb-3" style="max-width: 100%;">
+							  <div class="row no-gutters">
+							    <div class="col-md-4">
+							      <img src="{{ url_for('static', filename='images/profile_hoseong01.jpg') }}" class="card-img" alt="...">
+							    </div>
+							    <div class="col-md-8">
+							      <div class="card-body">
+							        <h5 class="card-title">천호성 대표변호사</h5>
+							        <p class="card-text">안녕하세요 천호성 변호사입니다. 다양한 증거수집을 통해 최선의 소송 솔루션을 제공하겠습니다</p><hr>
+							        <table>
+							        	<thead>
+							        		<th class="table-header-font">학 력</th>
+							        	</thead>
+							        	<tbody>
+							        		<td>
+												<span class="profile-span">서울시립대학교 컴퓨터과학부 학사</span><br>
+												<span class="profile-span">경희대학교 법학전문대학원 석사</span>	
+							        		</td>							        		
+							        	</tbody>
+							        	<thead>
+							        		<th class="pad-up-profile-table table-header-font">경 력</th>
+							        	</thead>
+							        	<tbody>
+							        		<td>
+												<span class="profile-span">법무법인 이래</span><br>
+												<span class="profile-span">변호사 천호성 법률사무소</span>	<br>
+												<span class="profile-span">법무법인 신사(現)</span>	<br><br>
+												<span class="profile-span profile-letterspacing">더불어민주당 제20대 국회의원선거 선거대책위원회 법률지원단 자문위원</span><br>
+												<span class="profile-span profile-letterspacing">최순실등민간인에의한국정농단의혹사건규명을위한 특별검사 특별수사관</span><br>			
+												<span class="profile-span">더불어민주당 김진표(수원무) 국회의원 비서관</span><br>												
+												<span class="profile-span">대법원 국선변호인</span>
+							        		</td>							        		
+							        	</tbody>							        	
+							        </table>
+							      </div>
+							    </div>
+							  </div>
+							</div>					
+							<footer>
+								<a href="#" class="button special btn-win">주요 승소사례</a>					
+							</footer>
+						</article>					
+
+{% endblock %}

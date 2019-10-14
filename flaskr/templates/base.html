@@ -1,0 +1,110 @@
+<!-- <!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>Flaskr</h1>
+  <ul>
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section> -->
+
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>LAWFIRM DISCOVERY</title>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />    
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+        <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+            <!-- JS -->   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+        <!-- google platform library    
+        <meta name="google-signin-scope" content="profile email">
+	    <meta name="google-signin-client_id" content="477442066838-v6vnfge4mi2bd6rv02jhbufolh5riqsj.apps.googleusercontent.com">
+	    <script src="https://apis.google.com/js/platform.js" async defer></script>
+	    <script src="https://apis.google.com/js/api:client.js"></script> -->
+
+        {% block script %}        
+        {% endblock %} 
+
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="{{ url_for('index.home')}}" class="logo">법무법인 디스커버리</a>
+					<nav id="nav">
+						<a class="rightMenu" href="{{ url_for('index.lawyer')}}">변호사 소개</a>
+						<a class="rightMenu hidden" href="filed.html">업무분야</a>
+						<a class="rightMenu" href="case.html">승소사례</a>						
+						<a class="rightMenu" href="#">|</a>
+						<a class="rightMenu hidden" href="#">중소기업 법률자문센터</a>
+						<a class="rightMenu" href="#">Blog</a>
+						<a class="rightMenu" href="#">|</a>
+						<a class="rightMenu" href="#">판례 검색</a>
+						<a class="rightMenu" href="#">Lawbot</a>
+						<a class="rightMenu" href="#">|</a>
+            {% if g.user %}
+              <span>{{ g.user['username'] }}</span>
+              <a class="rightMenu" href="{{ url_for('auth.logout') }}">Log Out</a>
+            {% else %}
+              <a class="rightMenu" href="{{ url_for('auth.register') }}">Register</a>
+              <a class="rightMenu" href="{{ url_for('auth.login') }}">Log In</a>
+            {% endif %}
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+      </header>
+      
+      {% block body_content %}
+      
+      {% endblock %} 
+
+      <!-- Footer -->
+			<footer id="footer">
+          <div class="inner">
+            <div class="flex">
+              <div class="copyright">
+                &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+              </div>
+              <ul class="icons">
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+                <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+                <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+  
+      <!-- Scripts -->
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+  
+    </body>
+  </html>
