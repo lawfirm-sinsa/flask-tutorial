@@ -7,15 +7,20 @@
 				let email = $('#inputEmail').val();
 				let password = $('#inputPassword').val();
 				console.log(name,email,password)
-
 				$.ajax({
 					type: "POST",
 					url: "/auth/login",
-					data : {					
+					data: {					
 						email_give : email,
 						password_give : password},
 					success: function(response){
-						console.log(response)					
+						if(response['result'] == 'success'){
+              setCookie('mytoken', response['token']);                          
+              alert('로그인 성공')
+              window.location.href = '/protected_service'
+            }	else {
+              alert(response['msg'])
+            }									
 				}})
 			}	
 		</script>
@@ -26,44 +31,39 @@
 			
 		<!-- Banner -->
 		<section id="banner">
-			<h1>LAWFIRM DISCOVERY</h1>
-			<p>Discovery Evidence & Depend Your Right</p>
+			<h1>LAWFIRM TERRA</h1>
+			<p>Technical Evidence acquiRe for your Right Advocating</p>
 		</section>
 			
 		<!-- login section -->
-			<div class="container">
-			  <div class="row no-gutter">
-			    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-				  <div class="col-md-8 col-lg-6">
-			        <div class="login d-flex align-items-center py-5 loginMainDiv">
-			          <div class="container">
-			            <div class="row">
-			              <div class="col-md-9 col-lg-8 mx-auto">
-                      <h3 class="login-heading mb-4">Welcome back!</h3>		                        
-			                  <div class="form-label-group">
-			                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-			                    <label for="inputEmail">Email address</label>
-			                  </div>
-			                  <div class="form-label-group">
-			                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-			                    <label for="inputPassword">Password</label>
-			                  </div>
-			                  <div class="custom-control custom-checkbox mb-3">
-			                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-								<label class="custom-control-label" for="customCheck1">Remember password</label>							  	
-								</div>			                
-									<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">Sign In</button> 
-									<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('auth.register')}}'">Sign Up</button> 
-								</div>																				                  
-			                  <div class="text-center">
-							    <a class="small" href="#">Forgot password?</a>
-							  </div>
-			            </div>
-			          </div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			</div> 
+			<div class="container">			  				  
+        <div class="login d-flex align-items-center py-5 loginMainDiv">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-4">로그인</h3>		                        
+                  <div class="form-label-group">
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputEmail">Email address</label>
+                  </div>
+                  <div class="form-label-group">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">Password</label>
+                  </div>
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Remember password</label>							  	
+                  </div>			                
+                  <div class="text-center">
+                    <a class="small" href="#">Forgot password?</a>
+                  </div>
+                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">Sign In</button> 
+                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('auth.register') }}'">Sign Up</button>                         
+                  </div>																				                  
+              </div>
+            </div>
+          </div>
+        </div>			    
+      </div> 
 {% endblock %}
 		

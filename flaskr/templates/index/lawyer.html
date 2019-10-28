@@ -2,6 +2,11 @@
 
 {% block body_content %}
 
+	<section id="banner">
+		<h1>LAWFIRM TERRA</h1>
+		<p>Technical Evidence acquiRe for your Right Advocating</p>
+	</section>
+
 		<!-- Three -->
 			<section id="three" class="wrapper">
 				<div class="inner">
@@ -55,7 +60,7 @@
 							  </div>
 							  <footer>
 									<a href="#" class="button special btn-win">주요 승소사례</a>					
-								</footer>
+							  </footer>
 							</div>												
 						</article>
 						<article>
@@ -63,7 +68,7 @@
 							<div class="card mb-3" style="max-width: 100%;">
 							  <div class="row no-gutters">
 							    <div class="col-md-4">
-							      <img src="{{ url_for('static', filename='images/profile_hoseong01.jpg') }}" class="card-img" alt="...">
+							      <img id="profile_img_hoseong" src="{{ url_for('static', filename='images/profile_hoseong01.jpg') }}" class="card-img" alt="...">
 							    </div>
 							    <div class="col-md-8">
 							      <div class="card-body">
@@ -97,10 +102,10 @@
 							      </div>
 							    </div>
 							  </div>
-							</div>					
-							<footer>
-								<a href="#" class="button special btn-win">주요 승소사례</a>					
-							</footer>
+							  <footer>
+									<a href="#" class="button special btn-win">주요 승소사례</a>					
+							  </footer>
+							</div>												
 						</article>					
 
 {% endblock %}

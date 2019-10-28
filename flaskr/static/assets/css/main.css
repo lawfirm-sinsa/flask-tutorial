@@ -3174,7 +3174,7 @@ th.colProfile {
 }
 
 .card-text {
-  font-size: 2vw;
+  font-size: 1.5vw;
   font-weight: bold;
 }
 
@@ -3373,14 +3373,19 @@ th.colProfile {
 }
 
 #profile_img_jinu{
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+#profile_img_hoseong{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 
 .btn-win {
 	width:150px;
-	display:block;
-  	margin: 0 auto;
+	display: block;
+	margin: 0 auto 20px auto;
 }
 
 .profile-letterspacing {
@@ -4306,3 +4311,14 @@ th.colProfile {
 	display: none !important;
 }
 
+/* 메인페이지 로그인 및 로그아웃 버튼 레이아웃 */
+
+#main_logout_btn {
+	display: none;
+	border-radius: 15px;
+	background-color:#454d55;
+}
+
+#login_userinfo {
+	display: none;
+}

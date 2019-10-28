@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
+{% block script %}	
+
+{% endblock %}
+
 {% block body_content %}
 
 <!-- Banner -->
 <section id="banner">
-		<h1>LAWFIRM DISCOVERY</h1>
-		<p>Discovery Evidence & Depend Your Right</p>
-	</section>
+	<h1>LAWFIRM TERRA</h1>
+	<p>Technical Evidence acquiRe for your Right Advocating</p>
+</section>
 
 <!-- One -->
 	<section id="one" class="wrapper">
@@ -50,7 +54,7 @@
 				<h2>OUR LAWYER</h2>
 				<p>저희 법인의 변호사들을 소개합니다.</p>
 			</header>
-			<div class="flex flex-4">
+			<div class="flex flex-3">
 				<div class="box person">
 					<div class="image round">
 						<img src="{{ url_for('static', filename='images/profile_jinu01.jpeg') }}" alt="박진우 변호사" />
@@ -64,6 +68,13 @@
 					</div>
 					<h3>천호성 대표변호사</h3>
 					<p>cjsghtjdsla@gmail.com</p>
+				</div>
+				<div class="box person">
+						<div class="image round">
+							<img src="{{ url_for('static', filename='images/profile_jinu01.jpeg') }}" alt="박진우 변호사" />
+						</div>
+						<h3>박진우 대표변호사</h3>
+						<p>jinu0720@naver.com</p>
 				</div>
 			</div>
 		</div>

@@ -3,7 +3,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from flaskr.auth import login_required
+from .auth import jwt_token_required
 from flaskr.db import get_db
 from pymongo import MongoClient
 
@@ -12,7 +12,7 @@ bp = Blueprint('blog', __name__)
 client = MongoClient('localhost',27017)
 db = client.dbLFD
 
-@bp.route('/')
+@bp.route('/blog')
 def index():
     #db = get_db()
     posts = db.user_test4.find()
@@ -26,7 +26,7 @@ def index():
     return render_template('blog/index.html', posts=posts)
 
 @bp.route('/create', methods=('GET', 'POST'))
-@login_required
+@jwt_token_required
 def create():
     if request.method == 'POST':
         title = request.form['title']
@@ -69,7 +69,7 @@ def get_post(id, check_author=True):
     return post
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
-@login_required
+@jwt_token_required
 def update(id):
     post = get_post(id)
 
@@ -96,7 +96,7 @@ def update(id):
     return render_template('blog/update.html', post=post)
 
 @bp.route('/<int:id>/delete', methods=('POST',))
-@login_required
+@jwt_token_required
 def delete(id):
     get_post(id)
     db = get_db()
