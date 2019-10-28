@@ -6,46 +6,51 @@
 
     $(document).ready(function(){						
         if ( getCookie('mytoken') != "" ) {									
-        document.getElementById("blog_submit").style.display="none";
-        document.getElementById("main_login_btn").style.display="none";
-        document.getElementById("login_userinfo").style.display="inline-block";
-        load_user_info()
+        document.getElementById("blog_submit").style.display="inline-block";        
         }
-        else {
-        document.getElementById("main_logout_btn").style.display="none";
-        document.getElementById("main_login_btn").style.display="inline-block";
+        else {        
+        document.getElementById("blog_submit").style.display="none";        
         }
     });
     
+    function load_user_info() {
+      $.ajax({
+        type : 'GET',
+        url : '/auth/validation',
+        headers : {'token_give' : getCookie('mytoken')},
+        data : {},
+        success : function(response) {
+          if (response['result'] == 'success') {            
+            return response['username'];											
+          } 
+        }     
+      })
+    }
+
     function posting() {
 			// read url, comment
-			let title = $('#blog_title').val();
-			let comment = $('#posting-comment').val();
-			let author = 'sky_logan';
+			let blog_title = $('#blog_title').val();
+			let blog_body = $('#blog_body').val();
+			let author = load_user_info();
 			// ajax 
 			$.ajax ({
 				type : "POST",
-				url : "/post",
+				url : "/blog/create",
+        headers : {'token_give' : getCookie('mytoken')},
 				data : {
-					url_give:url,
-					comment_give:comment,
+					blog_title_give:blog_title,
+					blog_body_give:blog_body,
 					author_give:author },
 				success: function (response) {
 					if (response['result'] == 'success') {
 						alert('success posting');
-						window.location.reload();					
+						window.location.href = '/blog'
 					} else {
-						alert('server error');
+						alert('error');
 					}
 				}
 			})
-		}
-    
-    function logout(){
-        setCookie('mytoken', "");
-        alert('로그아웃!')
-        window.location.href='/auth/login'
-    }          
+		}    
 </script>
 
 {% endblock %}
@@ -70,7 +75,7 @@
                 <label for="exampleFormControlInput1">내 용</label>
                 <textarea id="blog_body" class="form-control" placeholder="내용을 입력하세요" row="5" required> </textarea>           
             </div> <br>
-                <button id="blog_submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">submit</button>             
+                <button id="blog_submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="posting()">submit</button>             
             </div>																				                  
         </div>
     </div>

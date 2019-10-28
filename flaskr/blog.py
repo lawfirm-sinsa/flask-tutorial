@@ -28,11 +28,12 @@ def index():
 @bp.route('/blog/create', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        title_receive = request.form['blog_title_give']
+        body_receive = request.form['blog_body_give']
+        author_receive = request.form['author_give']
         error = None
 
-        if not title:
+        if not title_receive:
             error = 'Title is required.'
 
         if error is not None:
@@ -45,7 +46,7 @@ def create():
                 (title, body, g.user['id'])
             )
             db.commit()"""
-            db.user_test4.insert_one({'title':title, 'body':body, 'author_id':g.user['id']})
+            db.blog_test1.insert_one({'title':title_receive, 'body':body_receive, 'author':author_receive})
             return redirect(url_for('blog.index'))
 
     return render_template('blog/create.html')
