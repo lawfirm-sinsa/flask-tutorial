@@ -1,15 +1,81 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}New Post{% endblock %}</h1>
+{% block script %}
+
+<script>
+
+    $(document).ready(function(){						
+        if ( getCookie('mytoken') != "" ) {									
+        document.getElementById("blog_submit").style.display="none";
+        document.getElementById("main_login_btn").style.display="none";
+        document.getElementById("login_userinfo").style.display="inline-block";
+        load_user_info()
+        }
+        else {
+        document.getElementById("main_logout_btn").style.display="none";
+        document.getElementById("main_login_btn").style.display="inline-block";
+        }
+    });
+    
+    function posting() {
+			// read url, comment
+			let title = $('#blog_title').val();
+			let comment = $('#posting-comment').val();
+			let author = 'sky_logan';
+			// ajax 
+			$.ajax ({
+				type : "POST",
+				url : "/post",
+				data : {
+					url_give:url,
+					comment_give:comment,
+					author_give:author },
+				success: function (response) {
+					if (response['result'] == 'success') {
+						alert('success posting');
+						window.location.reload();					
+					} else {
+						alert('server error');
+					}
+				}
+			})
+		}
+    
+    function logout(){
+        setCookie('mytoken', "");
+        alert('로그아웃!')
+        window.location.href='/auth/login'
+    }          
+</script>
+
 {% endblock %}
 
-{% block content %}
-  <form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-    <input type="submit" value="Save">
-  </form>
+{% block body_content %}
+
+<!-- Banner -->
+<section id="banner">
+	<h1>LAWFIRM TERRA</h1>
+	<p>Technical Evidence acquiRe for your Right Advocating</p>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-lg-8 mx-auto">
+        <h3 class="login-heading mb-4">BLOG</h3>		                        
+            <div class="form-label-group">
+                <label for="exampleFormControlInput1">제 목</label>
+                <input type="text" id="blog_title" class="form-control" placeholder="제목을 입력하세요" required autofocus>            
+            </div> <br>
+            <div class="form-label-group">
+                <label for="exampleFormControlInput1">내 용</label>
+                <textarea id="blog_body" class="form-control" placeholder="내용을 입력하세요" row="5" required> </textarea>           
+            </div> <br>
+                <button id="blog_submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">submit</button>             
+            </div>																				                  
+        </div>
+    </div>
+</div>
+
+
+
 {% endblock %}

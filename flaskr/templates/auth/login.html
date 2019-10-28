@@ -17,7 +17,7 @@
 						if(response['result'] == 'success'){
               setCookie('mytoken', response['token']);                          
               alert('로그인 성공')
-              window.location.href = '/protected_service'
+              window.location.href = '/'
             }	else {
               alert(response['msg'])
             }									

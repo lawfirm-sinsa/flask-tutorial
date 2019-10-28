@@ -25,8 +25,7 @@ def index():
 
     return render_template('blog/index.html', posts=posts)
 
-@bp.route('/create', methods=('GET', 'POST'))
-@jwt_token_required
+@bp.route('/blog/create', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
         title = request.form['title']

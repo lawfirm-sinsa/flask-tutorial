@@ -2,6 +2,40 @@
 
 {% block script %}
 
+<script>
+
+    $(document).ready(function(){						
+        if ( getCookie('mytoken') != "" ) {									
+        document.getElementById("blog_create").style.display="inline-block";        
+        load_post()
+        }
+        elif load_post(response['result'] == 'fail'){
+        document.getElementById("main_logout_btn").style.display="none";
+        document.getElementById("main_login_btn").style.display="inline-block";
+        }
+    });
+    
+    function posting() {
+        $.ajax({
+        type : 'GET',
+        url : '/blog/get_post',
+        headers : {'token_give' : getCookie('mytoken')},
+        data : {},
+        success : function(response) {
+            if (response['result'] == 'success') {
+            document.getElementById("login_userinfo").innerHTML=response['username'];												
+            } 
+        }     
+        })
+    }
+    
+    function logout(){
+        setCookie('mytoken', "");
+        alert('로그아웃!')
+        window.location.href='/auth/login'
+    }          
+</script>
+
 {% endblock %}
 
 {% block body_content %}
@@ -12,7 +46,24 @@
 	<p>Technical Evidence acquiRe for your Right Advocating</p>
 </section>
 
+<div class="container">
+    <div class="row">
+        <table>
+            <thead>
+                <th class="table-header-font">글목록</th>
+            </thead>
+            <tbody>
+                <td>
+                    <span class="profile-span"></span><br>
+                    <span class="profile-span"></span>	
+                </td>							        		
+            </tbody>
+        </table> <br>        
+        </div> 
+            <button id="blog_create" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">글쓰기</button>             
+        </div>																				                  
+        </div>
+    </div>
+</div>
 
 {% endblock %}
-
-#SE-c8b84272-f74a-11e9-8516-85819b62a187

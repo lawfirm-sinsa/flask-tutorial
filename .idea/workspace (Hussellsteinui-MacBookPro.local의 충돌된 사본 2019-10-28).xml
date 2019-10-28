@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aad14c1a-ba63-42d4-9660-b9509653ce0f" name="Default Changelist" comment="" />
+    <list default="true" id="aad14c1a-ba63-42d4-9660-b9509653ce0f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/flask-tutorial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flask-tutorial.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/blog.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/blog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/static/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/static/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/static/assets/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/static/assets/js/skel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/auth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/templates/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/auth/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/templates/blog/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/blog/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/templates/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/index/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskr/templates/index/lawyer.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskr/templates/index/lawyer.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
