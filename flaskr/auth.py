@@ -39,17 +39,7 @@ def register():
         elif db.user_test3.find_one({'username':request.form['username_give']}):
             error = 'User {} is already registered.'.format(username)
         elif db.user_test3.find_one({'email':request.form['email_give']}):
-            error = 'email {} is already registered.'.format(email)
-        """elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
-        ).fetchone() is not None:
-            error = 'User {} is already registered.'.format(username)"""
-        """if error is None:
-            db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
-                (username, generate_password_hash(password))
-            )
-            db.commit()"""
+            error = 'email {} is already registered.'.format(email)        
         if error is None:
             db.user_test3.insert_one({'username':username, 'email':email, 'password':pw_hash})                
             #db.user_test3.insert_one({'username':username, 'email':email, 'password':generate_password_hash(password)})                
@@ -62,35 +52,27 @@ def register():
 def login():
     if request.method == 'POST':
         email = request.form['email_give']
-        password = request.form['password_give']
-        #db = get_db()
+        password = request.form['password_give']        
         error = None
         user = db.user_test3.find_one({'email':request.form['email_give']})            
         print(user)
         if user is None:            
             return jsonify({'result':'fail', 'msg':'email is incorrect'})
         elif not check_password_hash(user['password'], password):
-            return jsonify({'result':'fail', 'msg':'password is incorrect'})
-        #error = 'Incorrect password.'            
-        #if user is not None:
-        else:
-            #session.clear()
-            #session['user_id'] = str(user['_id'])
+            return jsonify({'result':'fail', 'msg':'password is incorrect'})        
+        else:            
             payload = {
                 'email' : email,
-                'exp' : datetime.datetime.utcnow() + datetime.timedelta(seconds=30)
+                'exp' : datetime.datetime.utcnow() + datetime.timedelta(seconds=300)
             }
             token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
             print(token)
-            return jsonify({'result':'success', 'token':token})
-        #else:
-        #    return jsonify({'result':'fail', 'msg':'email or password incorrect'})
+            return jsonify({'result':'success', 'token':token})        
     return render_template('auth/login.html')
 
 @bp.route('/validation', methods=['GET'])
 def api_valid():
     token_receive = request.headers['token_give']
-
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         print(payload)

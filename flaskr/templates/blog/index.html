@@ -7,14 +7,44 @@
     $(document).ready(function(){						
         if ( getCookie('mytoken') != "" ) {									
         document.getElementById("blog_create").style.display="inline-block";        
-        load_post()
+        load_blog_posting()
         }
-        elif load_post(response['result'] == 'fail'){
+        else {
         document.getElementById("main_logout_btn").style.display="none";
         document.getElementById("main_login_btn").style.display="inline-block";
+        load_blog_posting()
         }
     });
     
+    function load_blog_posting() {
+        $.ajax({
+        type : 'GET',
+        url : '/blog/get_posting',        
+        data : {},
+        success : function(response) {
+            if (response['result'] == 'success') {
+              let articles = response['articles'];
+              for (let i=0; i<articles.length; i++) {
+                make_list(articles[i]['author'],articles[i]['title'],articles[i]['body'],articles[i]['created_time'])    
+              }            
+            } else {
+              alert('포스팅을 받아오지 못했습니다')
+            }
+          }     
+        })
+    }    
+    
+    function make_list(author, title, body, created_time) {
+      let temp_html = `<tbody class="tabel-body-tbody">
+          <td class="table-body-author">${author}</td>
+          <td class="table-body-title">${title}</td>
+          <td class="table-body-body">${body}</td>		      
+          <td class="table-body-createdtime">${created_time}</td>		      
+        </tbody>`;		          
+        console.log(temp_html)
+      $('#table_blog_posting').append(temp_html);
+		}    
+
     function posting() {
         $.ajax({
         type : 'GET',
@@ -48,22 +78,22 @@
 
 <div class="container">
     <div class="row">
-        <table>
+        <table id="table_blog_posting" class="table_blog">
             <thead>
-                <th class="table-header-font">글목록</th>
+                <th class="table-header-author">작성자</th>
+                <th class="table-header-title">제목</th>
+                <th class="table-header-body">내용</th>
+                <th class="table-header-createdtime">작성시각</th>
             </thead>
-            <tbody>
-                <td>
-                    <span class="profile-span"></span><br>
-                    <span class="profile-span"></span>	
-                </td>							        		
-            </tbody>
-        </table> <br>        
-        </div> 
-            <button id="blog_create" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('blog.create') }}'">>글쓰기</button>             
-        </div>																				                  
-        </div>
-    </div>
+        </table>         
+    </div>    																			                          
+</div>
+<div> 
+    <button id="blog_create" class="btn btn-lg btn-primary btn-block blog_submit_btn text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('blog.create') }}'">>글쓰기</button>             
+</div>	
+
+<div class="card-columns" id="cards-box">
+
 </div>
 
 {% endblock %}

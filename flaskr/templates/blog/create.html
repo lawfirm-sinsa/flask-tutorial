@@ -3,7 +3,6 @@
 {% block script %}
 
 <script>
-
     $(document).ready(function(){						
         if ( getCookie('mytoken') != "" ) {									
         document.getElementById("blog_submit").style.display="inline-block";        
@@ -13,25 +12,10 @@
         }
     });
     
-    function load_user_info() {
-      $.ajax({
-        type : 'GET',
-        url : '/auth/validation',
-        headers : {'token_give' : getCookie('mytoken')},
-        data : {},
-        success : function(response) {
-          if (response['result'] == 'success') {            
-            return response['username'];											
-          } 
-        }     
-      })
-    }
-
     function posting() {
 			// read url, comment
 			let blog_title = $('#blog_title').val();
 			let blog_body = $('#blog_body').val();
-			let author = load_user_info();
 			// ajax 
 			$.ajax ({
 				type : "POST",
@@ -40,13 +24,13 @@
 				data : {
 					blog_title_give:blog_title,
 					blog_body_give:blog_body,
-					author_give:author },
+					},
 				success: function (response) {
 					if (response['result'] == 'success') {
-						alert('success posting');
+						alert(response['msg']);
 						window.location.href = '/blog'
 					} else {
-						alert('error');
+						alert(response['msg']);
 					}
 				}
 			})

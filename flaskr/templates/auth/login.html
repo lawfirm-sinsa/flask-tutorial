@@ -6,7 +6,7 @@
 			function signin() {
 				let email = $('#inputEmail').val();
 				let password = $('#inputPassword').val();
-				console.log(name,email,password)
+				console.log(email,password)
 				$.ajax({
 					type: "POST",
 					url: "/auth/login",
