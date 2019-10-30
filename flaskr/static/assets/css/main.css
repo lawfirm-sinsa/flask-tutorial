@@ -4378,3 +4378,7 @@ th.colProfile {
 #login_userinfo {
 	display: none;
 }
+
+#alert-login {
+	display: none;
+}
