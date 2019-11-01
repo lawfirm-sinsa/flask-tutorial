@@ -1,117 +1,87 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>LAWFIRM TERRA</title>
-		<meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />    
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
-        <!-- JS -->   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <!-- google platform library    
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="477442066838-v6vnfge4mi2bd6rv02jhbufolh5riqsj.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://apis.google.com/js/api:client.js"></script> -->      
-
-    <script>
-        $(document).ready(function(){						
-          if ( getCookie('mytoken') != "" ) {									
-          document.getElementById("main_logout_btn").style.display="inline-block";
-          document.getElementById("main_login_btn").style.display="none";
-          document.getElementById("login_userinfo").style.display="inline-block";
-          load_user_info()
-          }
-          else {
-          document.getElementById("main_logout_btn").style.display="none";
-          document.getElementById("main_login_btn").style.display="inline-block";
-          }
-        });
-      
-        function load_user_info() {
-          $.ajax({
-            type : 'GET',
-            url : '/auth/validation',
-            headers : {'token_give' : getCookie('mytoken')},
-            data : {},
-            success : function(response) {
-              if (response['result'] == 'success') {
-                document.getElementById("login_userinfo").innerHTML=response['username'];												
-              } 
-            }     
-          })
-        }
-      
-        function logout(){
-          setCookie('mytoken', "");
-          alert('로그아웃!')
-          window.location.href='/auth/login'
-        }          
-    </script> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/mymain.css') }}" />
+    
+    <title>법률사무소 디스커버리(LAWFIRM DISCOVERY)</title>    
 
     {% block script %}        
     {% endblock %} 
-       
-	</head>
-	<body>
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="{{ url_for('index.home')}}" class="logo">법무법인 테라</a>
-					<nav id="nav">
-						<a class="rightMenu" href="{{ url_for('index.lawyer')}}">변호사 소개</a>
-						<a class="rightMenu" href="filed.html">업무분야</a>
-						<a class="rightMenu" href="case.html">승소사례</a>						
-						<a class="rightMenu" href="#">|</a>
-						<a class="rightMenu" href="#">중소기업 법률자문센터</a>
-						<a class="rightMenu" href="{{ url_for('blog.index')}}">Blog</a>
-						<a class="rightMenu" href="#">|</a>
-						<a class="rightMenu hidden" href="#">판례&법령 검색</a>
-						<a class="rightMenu hidden" href="#">Lawbot</a>
-						<a class="rightMenu hidden" href="#">|</a>                        
-            <a id="main_login_btn" class="rightMenu" href="{{ url_for('auth.login') }}">Log In</a>            
-            <button id="main_logout_btn" class="rightMenu" onclick="logout()">Log out</button>            
-            <p id="login_userinfo" class="rightMenu"></p>
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-				</div>
-      </header>
-      
-      {% block body_content %}
-      
-      {% endblock %} 
-
-      <!-- Footer -->
-			<footer id="footer">
-          <div class="inner">
-            <div class="flex">
-              <div class="copyright">
-                &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">      
+      <a class="navbar-brand" href="{{ url_for('index.home')}}">
+          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="20" height="20" class="d-inline-block align-top" alt="">
+          LAWFIRM DISCOVERY
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index.lawyer') }}">변호사 소개 <span class="sr-only">(current)</span></a>
+            </li>          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                주요 업무분야
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">민사소송</a>
+                <a class="dropdown-item" href="#">형사소송</a>
+                <a class="dropdown-item" href="#">형사소송</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">기타 송무분야</a>
               </div>
-              <ul class="icons">
-                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-                <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-                <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
-              </ul>
-            </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('blog.index')}}">블로그</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">승소사례</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">온라인 법률상담</a>
+            </li>          
+          </ul>        
+            <a class="btn btn-outline-success my-2 my-sm-0" href="{{ url_for('auth.login') }}" role="button">SIGN UP</a>        
+        </div>
+      </div>      
+    </nav>
+
+    {% block body_content %}      
+    {% endblock %} 
+
+
+    <!-- Footer -->
+			<footer id="footer">
+        <div class="inner">
+          <div class="flex">            
+            <ul class="icons">
+              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+              <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+              <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+            </ul>
           </div>
-        </footer>
-  
-      <!-- Scripts -->
-        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery_min.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/skel_min.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='assets/js/cookie.js') }}"></script>
-  
-    </body>
-  </html>
+        </div>
+      </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/cookie.js') }}"></script>
+  </body>
+</html>
