@@ -19,6 +19,23 @@
     justify-content: center;
 } 
 
+.sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
+}
+
+.content {
+    padding: 10px;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
 /* jumbotron */
 .jumbotron {
     background-image: url("../../images/banner.jpg");

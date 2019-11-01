@@ -13,13 +13,35 @@
 
     <title>법률사무소 디스커버리(LAWFIRM DISCOVERY)</title>    
 
+    <script>
+      $(document).ready(function() {
+        // grab the initial top offset of the navigation 
+          var stickyNavTop = $('#navbar').offset().top;          
+          // our function that decides weather the navigation bar should have "fixed" css position or not.
+          var stickyNav = function(){
+            var scrollTop = $(window).scrollTop(); // our current vertical position from the top                
+            // if we've scrolled more than the navigation, change its position to fixed to stick to top,
+            // otherwise change it back to relative
+            if (scrollTop > stickyNavTop) { 
+                $('#navbar').addClass('sticky');
+            } else {
+                $('#navbar').removeClass('sticky'); 
+            }
+        };
+        stickyNav();
+        // and run it again every time you scroll
+        $(window).scroll(function() {
+          stickyNav();
+        });
+      });
+    </script>
     {% block script %}        
     {% endblock %} 
 
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e8ebe9;">      
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: #e8ebe9;">      
       <a class="navbar-brand" href="{{ url_for('index.home')}}">
           <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="lawfirm discovery logo">
           LAWFIRM DISCOVERY
