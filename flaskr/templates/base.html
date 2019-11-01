@@ -7,8 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/mymain.css') }}" />
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/mymain.css') }}" />    
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/412af0a508.js" crossorigin="anonymous"></script>
+
     <title>법률사무소 디스커버리(LAWFIRM DISCOVERY)</title>    
 
     {% block script %}        
@@ -17,9 +19,9 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">      
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e8ebe9;">      
       <a class="navbar-brand" href="{{ url_for('index.home')}}">
-          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="20" height="20" class="d-inline-block align-top" alt="">
+          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="lawfirm discovery logo">
           LAWFIRM DISCOVERY
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,20 +64,45 @@
     {% endblock %} 
 
 
-    <!-- Footer -->
-			<footer id="footer">
-        <div class="inner">
-          <div class="flex">            
-            <ul class="icons">
-              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-              <li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
-              <li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+  <!-- Footer -->
+  <div class="container-fluid" style="background-color: rgb(40, 39, 39);">  
+    <div class="row">
+      <div class="col footer-col-info">
+        <a class="footer-link" href="#" style="margin-right:1vw;">
+          <i class="fas fa-info-circle"></i>
+          면책공고
+        </a>            
+        <a class="footer-link" href="#" style="margin-right:1vw; margin-left: 1vw;">
+          <i class="far fa-file-alt"></i>
+          이용약관
+        </a>
+        <a class="footer-link" href="#" style="margin-leftt:1vw;">
+          <i class="fas fa-fingerprint"></i>
+          개인정보취급방침
+        </a>
+      </div>
+    </div>
+    <hr class="footer-hr">    
+    <div class="row">
+      <div class="col footer-logo">
+        <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="lawfirm discovery logo">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col footer-col-about">
+        <P class="footer-phr">
+          <i class="fas fa-id-badge"></i>
+          상호 : 변호사 천호성 법률사무소 | 사업자번호 (512-11-17484) | 대표변호사 : 천호성 | 광고책임자 : 천호성<br />                
+          <i class="fas fa-map-marker-alt"></i>
+          주소 : 서울특별시 서초구 강남대로 373, WEWORK 12층 104호 (서초동, 홍우빌딩)<br />
+          <i class="fas fa-mobile"></i>
+          연락처 : 휴대전화 010-6694-1415 | 팩스 000-000-000 | 이메일 cjsghtjdsla@gmail.com          
+        </P>
+      </div>    
+    </div>
+  </div>
+
+ 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -83,5 +110,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='assets/js/cookie.js') }}"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   </body>
 </html>

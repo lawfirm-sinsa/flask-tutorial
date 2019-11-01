@@ -4,24 +4,110 @@
 /* navbar */
 
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .nav-link {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .dropdown-item {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .container {
     justify-content: center;
-} (왜 적용 안되지? 여기부터)
+} 
 
+/* jumbotron */
+.jumbotron {
+    background-image: url("../../images/banner.jpg");
+    background-size: cover;
+    color: #dbdbdb;    
+}
+
+.index-jumbotron-h1 {
+    font-size: 3.5vw;
+    text-align: center;
+}
+
+.index-jumbotron-p {
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.index-jumbotron-hr {
+    border-color: white;
+}
+
+.jumbotron-channel-col {
+    justify-content: center;
+    display: flex;        
+}
+
+.btn-jumbotron-sangdam {
+    font-size: 0.7vw;
+    border-color: white;
+    color: white;
+    margin-right: 1vw;
+}
+
+.btn-jumbotron-kakao {
+    font-size: 0.7vw;
+    border-color: yellow;
+    color: yellow;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.btn-jumbotron-telegram {
+    font-size: 0.7vw;
+    border-color: rgb(68, 200, 249);
+    color: rgb(68, 200, 249);
+    margin-left: 1vw;
+}
 
 /* Footer */
 
+.container-kakaomap{
+    justify-content: center;
+    display: flex;
+}
+
+.footer-link {
+    color: white;
+}
+
+a.footer-link:hover {
+    color: rgb(152, 148, 148);
+}
+
+.footer-col-info {
+    padding-top: 3.5vw;
+    font-size: 0.8vw;
+    justify-content: center;
+    display: flex;
+}
+.footer-hr {
+    border-color: white;
+}
+
+.footer-logo {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 2vw;
+}
+
+.footer-phr{
+    color: white;
+    font-size: 0.7vw;
+}
+
+.footer-col-about {
+    font-size: 0.8vw;
+    justify-content: center;
+    display: flex;
+}
 #footer .inner {
     border-top: 1px solid #dbdbdb;
     padding-top: 3em;
