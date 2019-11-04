@@ -1,111 +1,96 @@
 {% extends 'base.html' %}
 
-{% block body_content %}
+{% block body_content %}	
 
-	<section id="banner">
-		<h1>LAWFIRM TERRA</h1>
-		<p>Technical Evidence acquiRe for your Right Advocating</p>
-	</section>
+<div class="container-fluid content">
+	<div class="card mb-3" style="max-width: 100%;">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<img id="profile_img_hoseong" src="{{ url_for('static', filename='images/profile_hoseong01.jpg') }}" class="card-img" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h1 class="card-title">천호성 대표변호사</h1>
+					<p class="card-text">다양한 증거수집을 통해 최선의 소송 솔루션을 제공하겠습니다</p><hr>
+					<p style="font-size: 1vw;">안녕하세요! 천호성 변호사입니다.<br/><br/>
+						학부때 컴퓨터를 전공했었지만, 정작 컴퓨터에는 큰 흥미를 못느꼈고, 여러 생각 끝에 변호사가 되고 싶다는 꿈에 이끌려 2014년 변호사 자격을 취득하였습니다.<br/><br/>
+							
+						3년 정도 '법무법인 이래'라는 로펌의 소속 변호사로 일하면서, 채권추심과 부동산 소송을 많이 수행하였습니다.</br><br/>
+							
+						3년간의 로펌 생활을 마치고 개인 법률사무소 개업을 앞두고 있던 2016년 말경에, '최순실 사태'가 터졌고, 운 좋게 '박영수 특검'의 특별수사관으로 일하면서, 제 인생에서 쉽게 잊혀지지 않는 특별한 경험을 하였습니다.</br><br/>
+							
+						그렇게 특검 생활을 마치고, 변호사로 일하던 중 우연한 계기로 '수원무' 지역을 지역구로 두고 있는 더불어 민주당 '김진표 의원'의 비서관으로 일하게 되어, 1년 6개월 정도 국회에서 일을 하였습니다. 예산심사, 입법안 발의, 국정감사 등을 직접 겪으면서 시야를 넓힐 수 있었던 좋은 경험이었습니다.</br><br/>
+							
+						나름 다양한 경험을 하고 2019년 2월에 다시 본업인 변호사로 돌아오면서, 다시 꿈이 생겼습니다. 평소에도 소위 말하는 리걸테크에 관심이 많이 있었지만, 수박 겉핧기 수준이 아니라 실제 필드에서 일할 수 있는 수준의 개발능력을 갖출 수 있다면, 법률서비스와 IT의 결합에 대하여 먼가 의미있고 재미있는 일을 할 수 있지 않을까 하는 꿈을 꿉니다.</br><br/>
 
-		<!-- Three -->
-			<section id="three" class="wrapper">
-				<div class="inner">
-					<header class="align-center">
-						<h2>About Our Lawyer</h2>
-						<p>저희 법인의 변호사들을 소개합니다</p>
-					</header>
-					<div class="flex">
-						<article>
-							<div class="card mb-3" style="max-width: 100%;">
-							  <div class="row no-gutters">
-							    <div class="col-md-4">
-								  <img id="profile_img_jinu" src="{{ url_for('static', filename='images/profile_jinu01.jpeg') }}" class="card-img" alt="...">
-								  <div class="card">
-								  	<p class="profile-contact">이메일 : <a href="#">jinu0720@naver.com</a><br /> 전화 : 010-xxxx-xxxx</p>
-								  </div>
-								</div>								
-							    <div class="col-md-8">
-							      <div class="card-body">
-							        <h5 class="card-title">박진우 대표변호사</h5>
-							        <p class="card-text">안녕하세요 박진우 변호사입니다. 의뢰인의 소중한 권리를 위해 최선을 다하겠습니다.</p>
-							        <table>
-							        	<thead>
-							        		<th class="table-header-font">학 력</th>
-							        	</thead>
-							        	<tbody>
-							        		<td>
-												<span class="profile-span">연세대학교 법학과 학사</span><br>
-												<span class="profile-span">경희대학교 법학전문대학원 석사</span>	
-							        		</td>							        		
-							        	</tbody>
-							        	<thead>
-							        		<th class="pad-up-profile-table table-header-font">경 력</th>
-							        	</thead>
-							        	<tbody>
-							        		<td>
-												<span class="profile-span">법무법인 이래</span><br>
-												<span class="profile-span" >법무법인 명천</span>	<br>
-												<span class="profile-span">법무법인 신사(現)</span>	<br><br>
-												<span class="profile-span">대한변호사협회 부동산전문변호사</span><br>
-												<span class="profile-span">대한변호사협회 북한이탈주민 법률지원위원회 위원</span><br>
-												<span class="profile-span profile-letterspacing">더불어민주당 제20대 국회의원선거 선거대책위원회 법률지원단 자문위원</span><br>
-												<span class="profile-span">방배중학교 학교폭력대책자치위원 및 명예교사</span><br>
-												<span class="profile-span">서울특별시교육청 주민참여예산위원</span><br>
-												<span class="profile-span">대법원 국선변호인</span>
-							        		</td>							        		
-							        	</tbody>							        	
-							        </table>							        
-							      </div>
-							    </div>
-							  </div>
-							  <footer>
-									<a href="#" class="button special btn-win">주요 승소사례</a>					
-							  </footer>
-							</div>												
-						</article>
-						<article>
-
-							<div class="card mb-3" style="max-width: 100%;">
-							  <div class="row no-gutters">
-							    <div class="col-md-4">
-							      <img id="profile_img_hoseong" src="{{ url_for('static', filename='images/profile_hoseong01.jpg') }}" class="card-img" alt="...">
-							    </div>
-							    <div class="col-md-8">
-							      <div class="card-body">
-							        <h5 class="card-title">천호성 대표변호사</h5>
-							        <p class="card-text">안녕하세요 천호성 변호사입니다. 다양한 증거수집을 통해 최선의 소송 솔루션을 제공하겠습니다</p><hr>
-							        <table>
-							        	<thead>
-							        		<th class="table-header-font">학 력</th>
-							        	</thead>
-							        	<tbody>
-							        		<td>
-												<span class="profile-span">서울시립대학교 컴퓨터과학부 학사</span><br>
-												<span class="profile-span">경희대학교 법학전문대학원 석사</span>	
-							        		</td>							        		
-							        	</tbody>
-							        	<thead>
-							        		<th class="pad-up-profile-table table-header-font">경 력</th>
-							        	</thead>
-							        	<tbody>
-							        		<td>
-												<span class="profile-span">법무법인 이래</span><br>
-												<span class="profile-span">변호사 천호성 법률사무소</span>	<br>
-												<span class="profile-span">법무법인 신사(現)</span>	<br><br>
-												<span class="profile-span profile-letterspacing">더불어민주당 제20대 국회의원선거 선거대책위원회 법률지원단 자문위원</span><br>
-												<span class="profile-span profile-letterspacing">최순실등민간인에의한국정농단의혹사건규명을위한 특별검사 특별수사관</span><br>			
-												<span class="profile-span">더불어민주당 김진표(수원무) 국회의원 비서관</span><br>												
-												<span class="profile-span">대법원 국선변호인</span>
-							        		</td>							        		
-							        	</tbody>							        	
-							        </table>
-							      </div>
-							    </div>
-							  </div>
-							  <footer>
-									<a href="#" class="button special btn-win">주요 승소사례</a>					
-							  </footer>
-							</div>												
-						</article>					
+						이 사이트는 그런 노력으로 완성되어 가고 있는 중이고, 여러 IT기술을 활용하여 다양한 법률정보를 효과적으로 제공할 수 있도록 지속적으로 사이트를 개편할 생각입니다.							
+						</p>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+<hr>
+<div class="container-fluid">
+	<div class="col">			
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="background-color: rgb(56, 55, 55);color: white"><i class="fas fa-user-graduate"></i> 학 력</th>
+				</tr>						
+			</thead>
+			<tbody>
+				<tr>
+					<td class="profile-span">서울시립대학교 컴퓨터과학부 학사</td>								
+				</tr>
+				<tr>
+					<td class="profile-span">경희대학교 법학전문대학원 석사</td>								
+				</tr>						
+			</tbody>
+			<thead>
+				<tr>
+					<th style="background-color: rgb(56, 55, 55);color: white"><i class="far fa-id-badge"></i> 경 력</th>
+				</tr>						
+			</thead>
+			<tbody>
+				<tr>
+					<td class="profile-span">법무법인 이래</td>								
+				</tr>
+				<tr>
+					<td class="profile-span">변호사 천호성 법률사무소</td>								
+				</tr>						
+				<tr>
+					<td class="profile-span">더불어민주당 제20대 국회의원선거 선거대책위원회 법률지원단 자문위원</td>								
+				</tr>						
+				<tr>
+					<td class="profile-span">최순실등민간인에의한국정농단의혹사건규명을위한 특별검사 특별수사관</td>								
+				</tr>	
+				<tr>
+					<td class="profile-span">더불어민주당 김진표(수원무) 국회의원 비서관</td>								
+				</tr>						
+				<tr>
+					<td class="profile-span">대법원 국선변호인</td>								
+				</tr>
+			<thead>
+				<tr>
+					<th style="background-color: rgb(56, 55, 55);color: white"><i class="far fa-address-card"></i> 연 락 처</th>
+				</tr>						
+			</thead>
+			<tbody>
+				<tr>
+					<td class="profile-span"><i class="fas fa-mobile-alt"></i><a href="tel:010-6694-1415"> 010-6694-1415</a></td>								
+				</tr>
+				<tr>
+					<td class="profile-span"><i class="far fa-envelope"></i><a href="mailto:cjsghtjdsla@gmail.com"> cjsghtjdsla@gmail.com</a></td>								
+				</tr>	
+				<tr>
+					<td class="profile-span"><i class="fab fa-facebook-square"></i><a href="https://www.facebook.com/lawfirmdiscovery"> facebook</a></td>								
+				</tr>	
+				
+			</tbody>						
+			</tbody>
+		</table>
+	</div>
+</div>
 
 {% endblock %}

@@ -6,19 +6,15 @@
 .navbar-brand {
     font-size: 1rem;
 }
-
 .nav-link {
     font-size: 1rem;
 }
-
 .dropdown-item {
     font-size: 1rem;
 }
-
 .container {
     justify-content: center;
 } 
-
 .sticky {
     position: fixed;
     width: 100%;
@@ -27,13 +23,23 @@
     z-index: 100;
     border-top: 0;
 }
-
 .content {
-    padding: 10px;
+    padding: 16px;
+}
+.sticky + .content {
+    padding-top: 40px;
+}
+.navbar-logo-p-tag{
+    padding-top: 5px;
 }
 
-.sticky + .content {
-    padding-top: 60px;
+.navbar-login-user {
+    padding-right: 5px;
+    display: none;
+}
+
+.navbar_logout_btn {
+    display: none;
 }
 
 /* jumbotron */
@@ -125,6 +131,21 @@ a.footer-link:hover {
     justify-content: center;
     display: flex;
 }
+
+/* css for sticky footer in base.html*/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+
+
+
 #footer .inner {
     border-top: 1px solid #dbdbdb;
     padding-top: 3em;
@@ -180,3 +201,54 @@ a.footer-link:hover {
         flex-direction: column;
         text-align: center;
     }
+
+/* login css */
+
+.container-login {    
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: white;
+}
+.form-signin {    
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;    
+}
+.form-signin .checkbox {
+    font-weight: 400;
+}
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: ;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* lawyer.html */
+
+.profile-span {
+	margin-left: 0em;
+	font-weight: bold;
+	font-size: 1.5vw;
+}
+
+

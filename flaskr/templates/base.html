@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,40 +10,67 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/mymain.css') }}" />    
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/412af0a508.js" crossorigin="anonymous"></script>
-
-    <title>법률사무소 디스커버리(LAWFIRM DISCOVERY)</title>    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- import my own cookie js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/cookie.js') }}"></script>
+    <!-- import kakao map api -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <!-- import sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      
+    <title>법률사무소 디스커버리(LAWFIRM DISCOVERY)</title>        
 
     <script>
-      $(document).ready(function() {
-        // grab the initial top offset of the navigation 
-          var stickyNavTop = $('#navbar').offset().top;          
-          // our function that decides weather the navigation bar should have "fixed" css position or not.
-          var stickyNav = function(){
-            var scrollTop = $(window).scrollTop(); // our current vertical position from the top                
-            // if we've scrolled more than the navigation, change its position to fixed to stick to top,
-            // otherwise change it back to relative
-            if (scrollTop > stickyNavTop) { 
-                $('#navbar').addClass('sticky');
-            } else {
-                $('#navbar').removeClass('sticky'); 
-            }
-        };
-        stickyNav();
-        // and run it again every time you scroll
-        $(window).scroll(function() {
-          stickyNav();
+        $(document).ready(function(){						
+          if ( getCookie('mytoken') != "" ) {									
+            $("#navbar-login-username").css('display', 'inline-block');
+            $("navbar_login_btn").css('display', 'none');                    
+            load_user_info()
+          }
+          else {
+          document.getElementById("navbar_logout_btn").style.display="none";
+          document.getElementById("navbar_login_btn").style.display="inline-block";
+          }
         });
-      });
-    </script>
-    {% block script %}        
+      
+        function load_user_info() {
+          $.ajax({
+            type : 'GET',
+            url : '/auth/validation',
+            headers : {'token_give' : getCookie('mytoken')},
+            data : {},
+            success : function(response) {
+              if (response['result'] == 'success') {
+                document.getElementById("navbar-login-username").innerHTML=response['username'];												
+              } 
+            }     
+          })
+        }
+      
+        function logout(){
+          setCookie('mytoken', "");
+          swal({
+              title: "로그아웃 성공",
+              text: "로그아웃에 성공하였습니다",
+              icon: "success",
+            });
+          window.location.href='/'
+        }          
+    </script> 
+
+    {% block script_one %}        
     {% endblock %} 
 
   </head>
   <body>
     <!-- navbar -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: #e8ebe9;">      
-      <a class="navbar-brand" href="{{ url_for('index.home')}}">
-          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="lawfirm discovery logo">
+      <a class="navbar-brand navbar-logo-p-tag" href="{{ url_for('index.home')}}">
+          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="20" height="20" class="d-inline-block align-center" alt="lawfirm discovery logo">
           LAWFIRM DISCOVERY
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,84 +81,118 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('index.lawyer') }}">변호사 소개 <span class="sr-only">(current)</span></a>
-            </li>          
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                주요 업무분야
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">민사소송</a>
-                <a class="dropdown-item" href="#">형사소송</a>
-                <a class="dropdown-item" href="#">형사소송</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">기타 송무분야</a>
-              </div>
-            </li>
+            </li>      
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('blog.index')}}">블로그</a>
-            </li>
+            </li>                        
             <li class="nav-item">
                 <a class="nav-link" href="#">승소사례</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">온라인 법률상담</a>
-            </li>          
-          </ul>        
-            <a class="btn btn-outline-success my-2 my-sm-0" href="{{ url_for('auth.login') }}" role="button">SIGN UP</a>        
+            </li>     
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  법률정보
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">판례 및 법령 검색</a>
+                  <a class="dropdown-item" href="#">소송 관련 유용한 사이트</a>                  
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">관할 법원 확인</a>
+                  <a class="dropdown-item" href="#">소가, 인지, 송달료 계산</a>
+                  <a class="dropdown-item" href="#">소송비용 산정</a>
+                  <a class="dropdown-item" href="#">손해배상액 계산</a>
+                </div>
+              </li>         
+          </ul>  
+            <div class="btn-group navbar-login-user">
+              <button id="navbar-login-username" type="button" class="btn btn-outline-primary"></button>
+              <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div>
+            <a class="btn btn-outline-success my-2 my-sm-0 navbar_login_btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
+            <a class="btn btn-outline-success my-2 my-sm-0 navbar_logout_btn" href="{{ url_for('auth.login') }}" role="button">LOGOUT</a>        
         </div>
       </div>      
     </nav>
 
+  <main role="main" class="flex-shrink-0">
     {% block body_content %}      
     {% endblock %} 
+  </main>
 
 
-  <!-- Footer -->
-  <div class="container-fluid" style="background-color: rgb(40, 39, 39);">  
-    <div class="row">
-      <div class="col footer-col-info">
-        <a class="footer-link" href="#" style="margin-right:1vw;">
-          <i class="fas fa-info-circle"></i>
-          면책공고
-        </a>            
-        <a class="footer-link" href="#" style="margin-right:1vw; margin-left: 1vw;">
-          <i class="far fa-file-alt"></i>
-          이용약관
-        </a>
-        <a class="footer-link" href="#" style="margin-leftt:1vw;">
-          <i class="fas fa-fingerprint"></i>
-          개인정보취급방침
-        </a>
+  <!-- Footer -->  
+    <div class="container-fluid" style="background-color: rgb(40, 39, 39);">  
+      <div class="row">
+        <div class="col footer-col-info">
+          <a class="footer-link" href="#" style="margin-right:1vw;">
+            <i class="fas fa-info-circle"></i>
+            면책공고
+          </a>            
+          <a class="footer-link" href="#" style="margin-right:1vw; margin-left: 1vw;">
+            <i class="far fa-file-alt"></i>
+            이용약관
+          </a>
+          <a class="footer-link" href="#" style="margin-leftt:1vw;">
+            <i class="fas fa-fingerprint"></i>
+            개인정보취급방침
+          </a>
+        </div>
+      </div>
+      <hr class="footer-hr">    
+      <div class="row">
+        <div class="col footer-logo">
+          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="lawfirm discovery logo">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col footer-col-about">
+          <P class="footer-phr">
+            <i class="fas fa-id-badge"></i>
+            상호 : 변호사 천호성 법률사무소 | 사업자번호 (512-11-17484) | 대표변호사 : 천호성 | 광고책임자 : 천호성<br />                
+            <i class="fas fa-map-marker-alt"></i>
+            주소 : 서울특별시 서초구 강남대로 373, WEWORK 12층 104호 (서초동, 홍우빌딩)<br />
+            <i class="fas fa-mobile"></i>
+            연락처 : 휴대전화 <a href="tel:010-6694-1415">010-6694-1415(전화걸기)</a> | 팩스 000-000-000 | 이메일 <a href="mailto:cjsghtjdsla@gmail.com">cjsghtjdsla@gmail.com(메일 보내기)</a>          
+          </P>
+        </div>    
       </div>
     </div>
-    <hr class="footer-hr">    
-    <div class="row">
-      <div class="col footer-logo">
-        <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="lawfirm discovery logo">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col footer-col-about">
-        <P class="footer-phr">
-          <i class="fas fa-id-badge"></i>
-          상호 : 변호사 천호성 법률사무소 | 사업자번호 (512-11-17484) | 대표변호사 : 천호성 | 광고책임자 : 천호성<br />                
-          <i class="fas fa-map-marker-alt"></i>
-          주소 : 서울특별시 서초구 강남대로 373, WEWORK 12층 104호 (서초동, 홍우빌딩)<br />
-          <i class="fas fa-mobile"></i>
-          연락처 : 휴대전화 010-6694-1415 | 팩스 000-000-000 | 이메일 cjsghtjdsla@gmail.com          
-        </P>
-      </div>    
-    </div>
-  </div>
 
- 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/cookie.js') }}"></script>
-    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <!-- sticky navbar js -->
+    <script>
+      $(document).ready(function() {
+        // grab the initial top offset of the navigation 
+          var stickyNavTop = $('#navbar').offset().top;          
+          // our function that decides weather the navigation bar should have "fixed" css position or not.
+          var stickyNav = function(){
+          var scrollTop = $(window).scrollTop(); // our current vertical position from the top                
+          // if we've scrolled more than the navigation, change its position to fixed to stick to top,
+          // otherwise change it back to relative
+          if (scrollTop > stickyNavTop) { 
+              $('#navbar').addClass('sticky');
+          } else {
+              $('#navbar').removeClass('sticky'); 
+          }
+        };
+        stickyNav();
+        // and run it again every time you scroll
+        $(window).scroll(function() {
+          stickyNav();
+        });
+      });
+    </script>    
+    {% block script_second %}        
+    {% endblock %} 
   </body>
 </html>

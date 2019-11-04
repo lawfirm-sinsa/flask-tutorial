@@ -1,71 +1,56 @@
 {% extends 'base.html' %}
 
-{% block script %}
+{% block script_one %}		
+<script>
+    function signin() {
+      let email = $('#inputEmail').val();
+      let password = $('#inputPassword').val();
+      console.log(email,password)
+      $.ajax({
+        type: "POST",
+        url: "/auth/login",
+        data: {					
+          email_give : email,
+          password_give : password},
+        success: function(response){
+          if(response['result'] == 'success'){
+            setCookie('mytoken', response['token']);                          
+            swal({
+              title: "로그인 성공",
+              text: "로그인에 성공하였습니다",
+              icon: "success",
+            });
+            window.location.href = '/'
+          }	else {
+            alert(response['msg'])
+          }									
+        }})
+    }	
+  </script>
+  {% endblock %}
 
-		<script>
-			function signin() {
-				let email = $('#inputEmail').val();
-				let password = $('#inputPassword').val();
-				console.log(email,password)
-				$.ajax({
-					type: "POST",
-					url: "/auth/login",
-					data: {					
-						email_give : email,
-						password_give : password},
-					success: function(response){
-						if(response['result'] == 'success'){
-              setCookie('mytoken', response['token']);                          
-              alert('로그인 성공')
-              window.location.href = '/'
-            }	else {
-              alert(response['msg'])
-            }									
-				}})
-			}	
-		</script>
-
+{% block body_content %}  
+    <!-- login section -->      
+    <div class="container container-login">      
+        <div class="form-signin text-center col-md-9 col-lg-8 col-xl-7 mx-auto">
+          <img class="mb-4" src="{{ url_for('static', filename='images/sample_logo.svg') }}" alt="법률사무소 디스커버리 로고" width="40" height="40">
+          <h1 class="h3 mb-3 font-weight-normal">로그인 해주세요!</h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">Sign In</button> 
+            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('auth.register') }}'">Sign Up</button> 
+          <p class="mt-5 mb-3 text-muted">&copy; 2019 | LAWFIRM DISCOVERY</p>
+        </div>      
+    </div>			
 {% endblock %}
 
-{% block body_content %}
-			
-		<!-- Banner -->
-		<section id="banner">
-			<h1>LAWFIRM TERRA</h1>
-			<p>Technical Evidence acquiRe for your Right Advocating</p>
-		</section>
-			
-    <!-- login section -->
-      
-
-			<div class="container">			  				  
-        <div class="login d-flex align-items-center py-5 loginMainDiv">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">로그인</h3>		                        
-                  <div class="form-label-group">
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                    <label for="inputEmail">Email address</label>
-                  </div>
-                  <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <label for="inputPassword">Password</label>
-                  </div>
-                  <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Remember password</label>							  	
-                  </div>			                
-                  <div class="text-center">
-                    <a class="small" href="#">Forgot password?</a>
-                  </div>
-                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">Sign In</button> 
-                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('auth.register') }}'">Sign Up</button>                         
-                  </div>																				                  
-              </div>
-            </div>
-          </div>
-        </div>			    
-      </div> 
+{% block script_second %}		
 {% endblock %}
 		
