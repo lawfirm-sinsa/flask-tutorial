@@ -2,32 +2,27 @@
 
 {% block script_one %}		
 <script>
-    function signin() {
-      let email = $('#inputEmail').val();
-      let password = $('#inputPassword').val();
-      console.log(email,password)
-      $.ajax({
-        type: "POST",
-        url: "/auth/login",
-        data: {					
-          email_give : email,
-          password_give : password},
-        success: function(response){
-          if(response['result'] == 'success'){
-            setCookie('mytoken', response['token']);                          
-            swal({
-              title: "로그인 성공",
-              text: "로그인에 성공하였습니다",
-              icon: "success",
-            });
-            window.location.href = '/'
-          }	else {
-            alert(response['msg'])
-          }									
-        }})
-    }	
-  </script>
-  {% endblock %}
+  function signin() {
+    let email = $('#inputEmail').val();
+    let password = $('#inputPassword').val();    
+    $.ajax({
+      type: "POST",
+      url: "/auth/login",
+      data: {					
+        email_give : email,
+        password_give : password},
+      success: function(response){
+        if(response['result'] == 'success'){
+          setCookie('mytoken', response['token']);                          
+          swal(response['msg']);
+          window.location.href = '/'
+        }	else {
+          swal(response['msg']);
+        }									
+      }})
+  }	
+</script>
+{% endblock %}
 
 {% block body_content %}  
     <!-- login section -->      

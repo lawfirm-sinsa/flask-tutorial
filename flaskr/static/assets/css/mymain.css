@@ -1,6 +1,55 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 /* navbar */
 
 .navbar-brand {
@@ -31,6 +80,7 @@
 }
 .navbar-logo-p-tag{
     padding-top: 5px;
+    font-size: 1rem;
 }
 
 .navbar-login-user {
@@ -42,6 +92,15 @@
     display: none;
 }
 
+#navbar-login-username {
+    border: 0.5px solid black;
+    padding: 12px;
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: rgb(154, 233, 154);
+    opacity: 0.7;    
+}
+
 /* jumbotron */
 .jumbotron {
     background-image: url("../../images/banner.jpg");
@@ -50,13 +109,16 @@
 }
 
 .index-jumbotron-h1 {
-    font-size: 3.5vw;
+    font-size: 3vw;
     text-align: center;
+    margin: 0.5vw;
 }
 
 .index-jumbotron-p {
     font-size: 1.5vw;
     text-align: center;
+    margin: 0.5vw;
+    line-height: 1.2em;
 }
 
 .index-jumbotron-hr {
@@ -99,6 +161,7 @@
 
 .footer-link {
     color: white;
+    font-size: .8vw;
 }
 
 a.footer-link:hover {
@@ -123,7 +186,7 @@ a.footer-link:hover {
 
 .footer-phr{
     color: white;
-    font-size: 0.7vw;
+    font-size: 0.6vw;
 }
 
 .footer-col-about {
@@ -142,65 +205,6 @@ a.footer-link:hover {
     color: white;
     text-align: center;
 }
-
-
-
-
-#footer .inner {
-    border-top: 1px solid #dbdbdb;
-    padding-top: 3em;
-}
-
-#footer .copyright {
-    color: #bbb;
-    font-size: 0.8em;
-    margin: 0 0 2em 0;
-    padding: 0;
-}
-
-    #footer .copyright a {
-        color: #bbb;
-        text-decoration: none;
-    }
-
-        #footer .copyright a:hover {
-            color: #bbb;
-            text-decoration: underline;
-        }
-
-#footer ul.icons li .icon {
-    font-size: 0.58em;
-}
-
-@media screen and (max-width: 736px) {
-
-    #footer .inner {
-        padding-top: 2em;
-    }
-
-    #footer .copyright {
-        -ms-flex-order: 2;
-        -moz-order: 2;
-        -webkit-order: 2;
-        -ms-order: 2;
-        order: 2;
-    }
-
-    #footer ul {
-        -ms-flex-order: 1;
-        -moz-order: 1;
-        -webkit-order: 1;
-        -ms-order: 1;
-        order: 1;
-    }
-
-    #footer .flex {
-        -moz-flex-direction: column;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        text-align: center;
-    }
 
 /* login css */
 
@@ -234,7 +238,7 @@ a.footer-link:hover {
 }
 .form-signin input[type="email"] {
     margin-bottom: -1px;
-    border-bottom-right-radius: ;
+    border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
@@ -251,4 +255,12 @@ a.footer-link:hover {
 	font-size: 1.5vw;
 }
 
+/* blog sidebar */
 
+.blog-sidebar-menu {
+    font-size: 1vw;
+}
+
+.blog-sidebar-summary {
+    margin-left: 0.15rem;
+}

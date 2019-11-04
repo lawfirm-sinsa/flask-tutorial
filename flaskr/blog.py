@@ -49,7 +49,7 @@ def create():
 
 @bp.route('/blog/get_posting', methods=('GET', 'POST'))
 def get_posting():    
-    posted_blog = list(db.blog_test1.find({},{'_id':0}))
+    posted_blog = list(db.blog_test2.find({},{'_id':0}))
     print(posted_blog)
     return jsonify({'result':'success', 'articles':posted_blog})        
 

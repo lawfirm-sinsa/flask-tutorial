@@ -54,7 +54,7 @@ def login():
         email = request.form['email_give']
         password = request.form['password_give']        
         error = None
-        user = db.user_test3.find_one({'email':request.form['email_give']})            
+        user = db.user_test3.find_one({'email':email})            
         print(user)
         if user is None:            
             return jsonify({'result':'fail', 'msg':'email is incorrect'})
@@ -67,7 +67,7 @@ def login():
             }
             token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
             print(token)
-            return jsonify({'result':'success', 'token':token})        
+            return jsonify({'result':'success', 'msg':'로그인 성공', 'token':token})        
     return render_template('auth/login.html')
 
 @bp.route('/validation', methods=['GET'])

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <!-- Required meta tags -->
@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/mymain.css') }}" />    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/mymain.css') }}" />    
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/412af0a508.js" crossorigin="anonymous"></script>
     <!-- Optional JavaScript -->
@@ -28,12 +28,13 @@
         $(document).ready(function(){						
           if ( getCookie('mytoken') != "" ) {									
             $("#navbar-login-username").css('display', 'inline-block');
-            $("navbar_login_btn").css('display', 'none');                    
+            $("#navbar_login_btn").css('display', 'none');                    
+            $("#navbar_logout_btn").css('display', 'inline-block');
             load_user_info()
           }
           else {
-          document.getElementById("navbar_logout_btn").style.display="none";
-          document.getElementById("navbar_login_btn").style.display="inline-block";
+            $("#navbar_logout_btn").css('display', 'none');
+            $("#navbar_login_btn").css('display', 'inline-block');          
           }
         });
       
@@ -45,7 +46,7 @@
             data : {},
             success : function(response) {
               if (response['result'] == 'success') {
-                document.getElementById("navbar-login-username").innerHTML=response['username'];												
+                document.getElementById('navbar-login-username').innerHTML=response['username'];												
               } 
             }     
           })
@@ -53,11 +54,8 @@
       
         function logout(){
           setCookie('mytoken', "");
-          swal({
-              title: "로그아웃 성공",
-              text: "로그아웃에 성공하였습니다",
-              icon: "success",
-            });
+          swal("로그아웃 성공");
+          $("#navbar-login-username").css('display', 'none');
           window.location.href='/'
         }          
     </script> 
@@ -100,27 +98,15 @@
                   <a class="dropdown-item" href="#">소송 관련 유용한 사이트</a>                  
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">관할 법원 확인</a>
-                  <a class="dropdown-item" href="#">소가, 인지, 송달료 계산</a>
+                  <a class="dropdown-item" href="#">소가 · 인지 · 송달료 계산</a>
                   <a class="dropdown-item" href="#">소송비용 산정</a>
                   <a class="dropdown-item" href="#">손해배상액 계산</a>
                 </div>
               </li>         
           </ul>  
-            <div class="btn-group navbar-login-user">
-              <button id="navbar-login-username" type="button" class="btn btn-outline-primary"></button>
-              <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
-            </div>
-            <a class="btn btn-outline-success my-2 my-sm-0 navbar_login_btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
-            <a class="btn btn-outline-success my-2 my-sm-0 navbar_logout_btn" href="{{ url_for('auth.login') }}" role="button">LOGOUT</a>        
+            <p id="navbar-login-username"></p>            
+            <a id="navbar_login_btn" class="btn btn-outline-success my-2 my-sm-0 navbar_login_btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
+            <a id="navbar_logout_btn"class="btn btn-outline-success my-2 my-sm-0 navbar_logout_btn" href="{{ url_for('auth.logout') }}" role="button" onclick="logout()">LOGOUT</a>        
         </div>
       </div>      
     </nav>
@@ -135,15 +121,15 @@
     <div class="container-fluid" style="background-color: rgb(40, 39, 39);">  
       <div class="row">
         <div class="col footer-col-info">
-          <a class="footer-link" href="#" style="margin-right:1vw;">
+          <a class="footer-link mr-2" href="#">
             <i class="fas fa-info-circle"></i>
             면책공고
           </a>            
-          <a class="footer-link" href="#" style="margin-right:1vw; margin-left: 1vw;">
+          <a class="footer-link mr-2 ml-2" href="#">
             <i class="far fa-file-alt"></i>
             이용약관
           </a>
-          <a class="footer-link" href="#" style="margin-leftt:1vw;">
+          <a class="footer-link ml-2" href="#">
             <i class="fas fa-fingerprint"></i>
             개인정보취급방침
           </a>
@@ -156,7 +142,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col footer-col-about">
+        <div class="col footer-col-about mb-2">
           <P class="footer-phr">
             <i class="fas fa-id-badge"></i>
             상호 : 변호사 천호성 법률사무소 | 사업자번호 (512-11-17484) | 대표변호사 : 천호성 | 광고책임자 : 천호성<br />                
