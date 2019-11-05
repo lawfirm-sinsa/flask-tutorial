@@ -255,7 +255,7 @@ a.footer-link:hover {
 	font-size: 1.5vw;
 }
 
-/* blog sidebar */
+/* blog index.html */
 
 .blog-sidebar-menu {
     font-size: 1vw;
@@ -263,4 +263,21 @@ a.footer-link:hover {
 
 .blog-sidebar-summary {
     margin-left: 0.15rem;
+}
+
+.blog_info {
+    font-size: 0.5em;    
+    color: rgb(201, 210, 201);    
+}
+
+.blog-posted-article {
+    padding-top: 2em;
+    border: 0.5px solid rgb(193, 188, 188);
+    border-radius: 0.2rem;
+}
+
+.blog_title {
+    font-size: 0.8em;
+    line-height: 1.1em;
+    text-align: justify;
 }

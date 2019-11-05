@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 
-{% block script %}
-
+{% block script_one %}
 <script>
-  $(document).ready(function(){						        
-      load_blog_posting()
+  $(document).ready(function(){						            
+    load_blog_posting()    
   });       
-  
-  function load_blog_posting() {
-    alert("tlqkf")
+
+  function load_blog_posting() {    
     $.ajax({
     type : 'GET',
     url : '/blog/get_posting',        
     data : {},
     success : function(response) {
         if (response['result'] == 'success') {
-          let articles = response['articles'];                    
+          let articles = response['articles'];     
+          console.log(articles)               
           for (let i=0; i<articles.length; i++) {
             make_blog(articles[i]['author'],articles[i]['created_time'],articles[i]['tag'],articles[i]['title'],articles[i]['body'])    
           }            
@@ -27,8 +26,13 @@
   }    
   
   function make_blog(author, created_time, tag, title, body) {
-    let temp_html = `<div class="container blog_info">
-      <p id="blog_created_time">${author}</p>
+    let temp_html = `<div class="container mt-2 mb-2 blog_info">
+      <p>
+        <span id="blog_author">${author}</span>
+        <span id="blog_created_time"></span>
+        # <span id="blog_tag"></span> 
+      </p>
+
       <p id="blog_author">${created_time}</p>
       <p id="blog_tag">${tag}</p>
     </div>
@@ -130,16 +134,21 @@
       </div>
     </div>
     <div id="blog_posting" class="col-md-9">
-      <div class="container blog_info">
-        <p id="blog_created_time"></p>
-        <p id="blog_author"></p>
-        <p id="blog_tag"></p>
-      </div>
-      <div class="container blog_title">
-        <p id="blog_title"></p>
-      </div>
-      <div class="container blog_body">
-        <p id="blog_body"></p>
+      <div class="conatainer-fluid mt-2 mb-2 blog-posted-article">
+        <div class="container blog_title">          
+          <p id="blog_title">사망한 임차인으로부터 임대차보증금을 양도받은 의뢰인(피고)에게 임차인의 상속인(원고)이 제기한 공탁금출급청구권 확인소송에서 승소한 사례</p>
+        </div>        
+        <div class="container mt-2 mb-2">
+          <span class="blog_info">
+            <span id="blog_author" class="blog_author">천호성</span> |
+            <span id="blog_created_time" class="blog_created_time">2019. 10. 20.</span> |
+            <span class="blog_tag">#<span id="blog_tag">승소사례</span></span>
+          </span>          
+        </div>
+        <hr>      
+        <div class="container blog_body">
+          <p id="blog_body">※ 사실관계 ▶ 말기암 환자인 임차인 A는 이 사건 부동산에 홀로 거주하면서 투병 중이었는데, 그 근처에서 가게를 하며 장사를 하던 의뢰인(피고)은 임차인 A의 사정을 딱하게 여겨 그때그때 병원비나 약값 등이 필요하면 계좌이체를 해주거나 현금을 주는 등으로 돈을 빌려주며 아픈 임차인 A를 돌봐왔고, 임차인 A는 자신이 빌린 돈을 이 사건 부동산의 임차보증금으로 갚고자 하</p>
+        </div>      
       </div>      
     </div>
   </div>

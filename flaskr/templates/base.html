@@ -33,7 +33,8 @@
             load_user_info()
           }
           else {
-            $("#navbar_logout_btn").css('display', 'none');
+            $("#navbar-login-username").css('display', 'none');
+            $("#navbar_logout_btn").css('display', 'none');            
             $("#navbar_login_btn").css('display', 'inline-block');          
           }
         });
@@ -56,6 +57,7 @@
           setCookie('mytoken', "");
           swal("로그아웃 성공");
           $("#navbar-login-username").css('display', 'none');
+          $("#navbar-login-username").removeClass('display', 'navbar-login-username');
           window.location.href='/'
         }          
     </script> 
