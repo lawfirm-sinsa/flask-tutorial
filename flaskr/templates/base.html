@@ -83,28 +83,25 @@
               <a class="nav-link" href="{{ url_for('index.lawyer') }}">변호사 소개 <span class="sr-only">(current)</span></a>
             </li>      
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('blog.index')}}">블로그</a>
-            </li>                        
-            <li class="nav-item">
-                <a class="nav-link" href="#">승소사례</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">온라인 법률상담</a>
-            </li>     
+              <a class="nav-link" href="{{ url_for('blog.index')}}">블로그</a>
+            </li>                                                    
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  법률정보
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">판례 및 법령 검색</a>
-                  <a class="dropdown-item" href="#">소송 관련 유용한 사이트</a>                  
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">관할 법원 확인</a>
-                  <a class="dropdown-item" href="#">소가 · 인지 · 송달료 계산</a>
-                  <a class="dropdown-item" href="#">소송비용 산정</a>
-                  <a class="dropdown-item" href="#">손해배상액 계산</a>
-                </div>
-              </li>         
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                법률정보
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">판례 및 법령 검색</a>
+                <a class="dropdown-item" href="#">소송 관련 유용한 사이트</a>                  
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">관할 법원 확인</a>
+                <a class="dropdown-item" href="#">소가 · 인지 · 송달료 계산</a>
+                <a class="dropdown-item" href="#">소송비용 산정</a>
+                <a class="dropdown-item" href="#">손해배상액 계산</a>
+              </div>
+            </li>         
+            <li class="nav-item">
+              <a class="nav-link" href="#">온라인 법률상담</a>
+            </li>
           </ul>  
             <p id="navbar-login-username"></p>            
             <a id="navbar_login_btn" class="btn btn-outline-success my-2 my-sm-0 navbar_login_btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
