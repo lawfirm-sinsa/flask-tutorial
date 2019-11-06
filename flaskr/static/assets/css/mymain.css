@@ -52,6 +52,12 @@ table {
 
 /* navbar */
 
+.base-navbar {
+    background-color: #e8ebe9;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
 .navbar-brand {
     font-size: 1rem;
 }
@@ -255,6 +261,12 @@ a.footer-link:hover {
 }
 
 /* blog index.html */
+
+.blog-main-container {
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
 
 .blog-sidebar-menu {
     font-size: 1vw;
