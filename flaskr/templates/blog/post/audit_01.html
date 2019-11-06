@@ -1,71 +1,6 @@
 {% extends 'base.html' %}
 
 {% block script_one %}
-<script>
-  $(document).ready(function(){						            
-    load_blog_posting2()    
-  });       
-
-  function load_blog_posting() {    
-    $.ajax({
-    type : 'GET',
-    url : '/blog/get_posting',        
-    data : {},
-    success : function(response) {
-        if (response['result'] == 'success') {
-          let articles = response['articles'];     
-          console.log(articles)               
-          for (let i=0; i<articles.length; i++) {
-            make_blog(articles[i]['author'],articles[i]['created_time'],articles[i]['tag'],articles[i]['title'],articles[i]['body'])    
-          }            
-        } else {
-          alert('포스팅을 받아오지 못했습니다')
-        }
-      }     
-    })
-  }    
-  
-  function make_blog(author, created_time, tag, title, body) {
-    let temp_html = `<div class="container mt-2 mb-2 blog_info">
-      <p>
-        <span id="blog_author">${author}</span>
-        <span id="blog_created_time"></span>
-        # <span id="blog_tag"></span> 
-      </p>
-
-      <p id="blog_author">${created_time}</p>
-      <p id="blog_tag">${tag}</p>
-    </div>
-    <div class="container blog_title">
-      <p id="blog_title">${title}</p>
-    </div>
-    <div class="container blog_body">
-      <p id="blog_body">${body}</p>
-    </div>`;		          
-      console.log(temp_html)
-    $('#blog_posting').append(temp_html);
-  }    
-
-  function posting() {
-      $.ajax({
-      type : 'GET',
-      url : '/blog/get_post',
-      headers : {'token_give' : getCookie('mytoken')},
-      data : {},
-      success : function(response) {
-          if (response['result'] == 'success') {
-          document.getElementById("login_userinfo").innerHTML=response['username'];												
-          } 
-      }     
-      })
-  }
-  
-  function logout(){
-      setCookie('mytoken', "");
-      alert('로그아웃!')
-      window.location.href='/auth/login'
-  }        
-</script>
 {% endblock %}
 
 {% block body_content %}
@@ -75,7 +10,7 @@
       <div class="card mb-3" style="max-width: 100%;">
           <div class="row no-gutters">
             <div class="col-md-8">
-              <a href="{{ url_for('blog.blog_post_1') }}"><img src="{{ url_for('static', filename='images/blog_main_img_audit.png') }}" class="card-img" alt="블로그 메인 포스팅"></a>
+              <img src="{{ url_for('static', filename='images/blog_main_img_audit.png') }}" class="card-img" alt="블로그 메인 포스팅">
             </div>
             <div class="col-md-4">
               <div class="card-body">

@@ -84,3 +84,7 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('blog.index'))
+
+@bp.route('/blog/post/[회계장부열람등사가처분 - 01] 대표이사의 횡령배임에 대한 대응으로 주주나 사원의 회계장부열람등사가처분의 필요성')
+def blog_post_1():    
+    return render_template('blog/post/audit_01.html')
