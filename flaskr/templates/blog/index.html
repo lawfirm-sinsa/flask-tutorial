@@ -3,7 +3,7 @@
 {% block script_one %}
 <script>
   $(document).ready(function(){						            
-    load_blog_posting2()    
+    load_blog_posting()    
   });       
 
   function load_blog_posting() {    
@@ -75,7 +75,7 @@
       <div class="card mb-3" style="max-width: 100%;">
           <div class="row no-gutters">
             <div class="col-md-8">
-              <a href="{{ url_for('blog.blog_post_1') }}"><img src="{{ url_for('static', filename='images/blog_main_img_audit.png') }}" class="card-img" alt="블로그 메인 포스팅"></a>
+              <a href="{{ url_for('blog.blog_post') }}"><img src="{{ url_for('static', filename='images/blog_main_img_audit.png') }}" class="card-img" alt="블로그 메인 포스팅"></a>
             </div>
             <div class="col-md-4">
               <div class="card-body">
@@ -116,6 +116,9 @@
           </div>
       </div>
     </div>
+</div>
+<div id="blog_posting">
+
 </div>
 
 
