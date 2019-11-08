@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block script %}
+{% block script_one %}
 
 <script>
     $(document).ready(function(){						
@@ -13,28 +13,31 @@
     });
     
     function posting() {
-			// read url, comment
-			let blog_title = $('#blog_title').val();
-			let blog_body = $('#blog_body').val();
-			// ajax 
-			$.ajax ({
-				type : "POST",
-				url : "/blog/create",
-        headers : {'token_give' : getCookie('mytoken')},
-				data : {
-					blog_title_give:blog_title,
-					blog_body_give:blog_body,
-					},
-				success: function (response) {
-					if (response['result'] == 'success') {
-						alert(response['msg']);
-						window.location.href = '/blog'
-					} else {
-						alert(response['msg']);
-					}
-				}
-			})
-		}    
+        // read url, comment
+        let blog_title = $('#blog_title').val();
+        let blog_body = $('#blog_body').val();
+        let blog_tag = $('#blog_tag').val();
+        console.log(blog_title, blog_body, blog_tag)
+        // ajax 
+        $.ajax ({
+            type : "POST",
+            url : "/blog/create",
+            headers : {'token_give' : getCookie('mytoken')},
+            data : {
+                blog_title_give:blog_title,
+                blog_body_give:blog_body,
+                blog_tag_give:blog_tag},
+            success: function (response) {
+                if (response['result'] == 'success') {
+                    alert(response['msg']);
+                    window.location.href = '/blog'
+                } else {
+                    alert(response['msg']);
+                }
+            }
+        })
+    }    
+
 </script>
 
 {% endblock %}
@@ -50,7 +53,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9 col-lg-8 mx-auto">
-        <h3 class="login-heading mb-4">BLOG</h3>		                        
+            <h3 class="login-heading mb-4">BLOG</h3>		                        
             <div class="form-label-group">
                 <label for="exampleFormControlInput1">제 목</label>
                 <input type="text" id="blog_title" class="form-control" placeholder="제목을 입력하세요" required autofocus>            
@@ -59,8 +62,11 @@
                 <label for="exampleFormControlInput1">내 용</label>
                 <textarea id="blog_body" class="form-control" placeholder="내용을 입력하세요" row="5" required> </textarea>           
             </div> <br>
-                <button id="blog_submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="posting()">submit</button>             
-            </div>																				                  
+            <div class="form-label-group">
+                <label for="exampleFormControlInput1">태 그</label>
+                <input type="text" id="blog_tag" class="form-control" placeholder="태그을 입력하세요" required autofocus>            
+            </div> <br>
+                <button id="blog_submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="posting()">submit</button>                
         </div>
     </div>
 </div>

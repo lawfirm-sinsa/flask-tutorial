@@ -28,6 +28,7 @@ def create():
     if request.method == 'POST':
         title_receive = request.form['blog_title_give']
         body_receive = request.form['blog_body_give']
+        tag_receive = request.form['blog_tag_give']
         token_receive = request.headers['token_give']
         created_time = datetime.now()
         error = None        
@@ -41,7 +42,9 @@ def create():
             payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])            
             userinfo = db.user_test3.find_one({'email':payload['email']},{'_id':0})                     
             username = userinfo['username']
-            db.blog_test1.insert_one({'title':title_receive, 'body':body_receive, 'author':username, 'created_time':created_time})
+            print(title_receive, body_receive, tag_receive, token_receive, created_time)
+            print(userinfo)
+            db.blog_test2.insert_one({'title':title_receive, 'body':body_receive, 'author':username, 'created_time':created_time, 'tag':tag_receive})
             return jsonify({'result':'success', 'msg':'포스팅이 완료되었습니다.'})
         else:                                    
             return jsonify({'result':'fail', 'msg':'something wrong'})
