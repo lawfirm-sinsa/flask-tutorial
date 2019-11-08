@@ -26,6 +26,7 @@
     }    
     
     function make_blog(author, created_time, tag, title, body) {
+        body = body.replace(/\n/g, "<br>");
         let temp_html = `
         <div>
             <div class="blog_hero">
