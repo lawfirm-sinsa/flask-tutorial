@@ -1,16 +1,13 @@
 import functools
 
-from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
-)
+from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
-
-from flaskr.db import get_db
 from pymongo import MongoClient
-import jwt
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity 
 import datetime
 import hashlib
 from functools import wraps
+import jwt
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -25,9 +22,9 @@ def register():
         username = request.form['username_give']
         email = request.form['email_give']
         password = request.form['password_give']
+        print(username, email, password)
 
-        pw_hash = generate_password_hash(password)
-        #db = get_db()
+        pw_hash = generate_password_hash(password)        
         error = None
 
         if not username:
@@ -41,8 +38,7 @@ def register():
         elif db.user_test3.find_one({'email':request.form['email_give']}):
             error = 'email {} is already registered.'.format(email)        
         if error is None:
-            db.user_test3.insert_one({'username':username, 'email':email, 'password':pw_hash})                
-            #db.user_test3.insert_one({'username':username, 'email':email, 'password':generate_password_hash(password)})                
+            db.user_test3.insert_one({'username':username, 'email':email, 'password':pw_hash})                            
             return jsonify({'result':'success'})
         else:
             return jsonify({'result':'fail'})
@@ -50,20 +46,19 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
-    if request.method == 'POST':
+    if request.method == 'POST':        
         email = request.form['email_give']
         password = request.form['password_give']        
-        error = None
         user = db.user_test3.find_one({'email':email})            
         print(user)
-        if user is None:            
-            return jsonify({'result':'fail', 'msg':'email is incorrect'})
-        elif not check_password_hash(user['password'], password):
-            return jsonify({'result':'fail', 'msg':'password is incorrect'})        
+        if not email:            
+            return jsonify({'result':'fail', 'msg':'email is incorrect'}), 400
+        if not check_password_hash(user['password'], password):
+            return jsonify({'result':'fail', 'msg':'password is incorrect'}), 400                
         else:            
             payload = {
                 'email' : email,
-                'exp' : datetime.datetime.utcnow() + datetime.timedelta(seconds=300)
+                'exp' : datetime.datetime.utcnow() + datetime.timedelta(seconds=30)
             }
             token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
             print(token)

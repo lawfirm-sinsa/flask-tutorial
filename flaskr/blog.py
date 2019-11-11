@@ -28,6 +28,7 @@ def create():
     if request.method == 'POST':
         title_receive = request.form['blog_title_give']
         body_receive = request.form['blog_body_give']
+        tag_receive = request.form['blog_tag_give']
         token_receive = request.headers['token_give']
         created_time = datetime.now()
         error = None        
@@ -41,7 +42,9 @@ def create():
             payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])            
             userinfo = db.user_test3.find_one({'email':payload['email']},{'_id':0})                     
             username = userinfo['username']
-            db.blog_test1.insert_one({'title':title_receive, 'body':body_receive, 'author':username, 'created_time':created_time})
+            print(title_receive, body_receive, tag_receive, token_receive, created_time)
+            print(userinfo)
+            db.blog_test2.insert_one({'title':title_receive, 'body':body_receive, 'author':username, 'created_time':created_time, 'tag':tag_receive})
             return jsonify({'result':'success', 'msg':'포스팅이 완료되었습니다.'})
         else:                                    
             return jsonify({'result':'fail', 'msg':'something wrong'})
@@ -88,3 +91,10 @@ def delete(id):
 @bp.route('/blog/post/[회계장부열람등사가처분 - 01] 대표이사의 횡령배임에 대한 대응으로 주주나 사원의 회계장부열람등사가처분의 필요성')
 def blog_post_1():    
     return render_template('blog/post/post_01.html')
+
+@bp.route('/blog/post')
+def blog_post():    
+    posted_blog = list(db.blog_test2.find({},{'_id':0}))        
+    print(posted_blog)
+    print(posted_blog[0]['title'])
+    return render_template('blog/post/post_base.html')

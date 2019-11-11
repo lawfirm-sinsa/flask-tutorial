@@ -18,32 +18,34 @@
           window.location.href = '/'
         }	else {
           swal(response['msg']);
-        }									
-      }})
+          }									
+        }
+      })
   }	
 </script>
 {% endblock %}
 
 {% block body_content %}  
-    <!-- login section -->      
-    <div class="container container-login">      
-        <div class="form-signin text-center col-md-9 col-lg-8 col-xl-7 mx-auto">
-          <img class="mb-4" src="{{ url_for('static', filename='images/sample_logo.svg') }}" alt="법률사무소 디스커버리 로고" width="40" height="40">
-          <h1 class="h3 mb-3 font-weight-normal">로그인 해주세요!</h1>
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
-          </div>
-            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">Sign In</button> 
-            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('auth.register') }}'">Sign Up</button> 
-          <p class="mt-5 mb-3 text-muted">&copy; 2019 | LAWFIRM DISCOVERY</p>
-        </div>      
-    </div>			
+
+<!-- login section -->      
+<div class="container container-login">      
+    <div class="form-signin text-center col-md-9 col-lg-8 col-xl-7 mx-auto">
+      <img class="mb-4" src="{{ url_for('static', filename='images/sample_logo.svg') }}" alt="법률사무소 디스커버리 로고" width="40" height="40">
+      <h1 class="h3 mb-3 font-weight-normal">로그인 해주세요!</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="이메일 주소" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signin()">로그인</button> 
+        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="location.href='{{ url_for('auth.register') }}'">회원가입</button> 
+      <p class="mt-5 mb-3 text-muted">&copy; 2019 | LAWFIRM DISCOVERY</p>
+    </div>      
+</div>			
 {% endblock %}
 
 {% block script_second %}		

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block script_one %}
+<script>
+    $(document).ready(function(){						            
+        load_blog_posting()    
+    });       
+    
+    function load_blog_posting() {    
+        $.ajax({
+        type : 'GET',
+        url : '/blog/get_posting',        
+        data : {},
+        success : function(response) {
+            if (response['result'] == 'success') {
+            let articles = response['articles'];     
+            console.log(articles)               
+            for (let i=0; i<articles.length; i++) {
+                make_blog(articles[i]['author'],articles[i]['created_time'],articles[i]['tag'],articles[i]['title'],articles[i]['body'])    
+            }            
+            } else {
+            alert('포스팅을 받아오지 못했습니다')
+            }
+        }     
+        })
+    }    
+    
+    function make_blog(author, created_time, tag, title, body) {
+        body = body.replace(/\n/g, "<br>");
+        let temp_html = `
+        <div>
+            <div class="blog_hero">
+                <p class="blog_post_title">${title}</p><br>
+                <span>
+                    <span>${author}</span>
+                    <span>${created_time}</span>
+                </span><br>
+                <a href="https://blog.naver.com/cjsghtjdsla/221691917775">네이버 블로그에서 보기</a>
+            </div>  
+        </div>
+        <div class="blog_post_body">
+            <div class="container-fluid">
+                <p>${body}</p>
+            </div>
+        </div>
+        `;		          
+        console.log(temp_html)
+        $('#blog_posting').append(temp_html);
+    }    
+</script>
+
+{% endblock %}
+
+{% block body_content %}
+
+<div id="blog_posting">    
+</div>
+
+
+  
+
+{% endblock %}
