@@ -28,14 +28,14 @@
         $(document).ready(function(){						
           if ( getCookie('mytoken') != "" ) {									
             $("#navbar-login-username").css('display', 'inline-block');
-            $("#navbar_login_btn").css('display', 'none');                    
-            $("#navbar_logout_btn").css('display', 'inline-block');
+            $("#navbar-login-btn").css('display', 'none');                    
+            $("#navbar-logout-btn").css('display', 'inline-block');
             load_user_info()
           }
           else {
             $("#navbar-login-username").css('display', 'none');
-            $("#navbar_logout_btn").css('display', 'none');            
-            $("#navbar_login_btn").css('display', 'inline-block');          
+            $("#navbar-logout-btn").css('display', 'none');            
+            $("#navbar-login-btn").css('display', 'inline-block');          
           }
         });
       
@@ -70,7 +70,7 @@
     <!-- navbar -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light base-navbar">      
       <a class="navbar-brand navbar-logo-p-tag" href="{{ url_for('index.home')}}">
-          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="20" height="20" class="d-inline-block align-center" alt="lawfirm discovery logo">
+          <img src="{{ url_for('static', filename='images/sample_logo.svg') }}" width="15" height="15" class="d-inline-block align-center" alt="lawfirm discovery logo">
           LAWFIRM DISCOVERY
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,8 +104,8 @@
             </li>
           </ul>  
             <p id="navbar-login-username"></p>            
-            <a id="navbar_login_btn" class="btn btn-outline-success my-2 my-sm-0 navbar_login_btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
-            <a id="navbar_logout_btn"class="btn btn-outline-success my-2 my-sm-0 navbar_logout_btn" href="{{ url_for('auth.logout') }}" role="button" onclick="logout()">LOGOUT</a>        
+            <a id="navbar-login-btn" class="btn btn-outline-success my-2 my-sm-0 navbar-login-btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
+            <a id="navbar-logout-btn"class="btn btn-outline-success my-2 my-sm-0 navbar-logout-btn" href="{{ url_for('auth.logout') }}" role="button" onclick="logout()">LOGOUT</a>        
         </div>
       </div>      
     </nav>

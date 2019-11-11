@@ -1,0 +1,525 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* navbar */
+
+.base-navbar {
+    background-color: #e8ebe9;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.navbar-brand {
+    font-size: 18px;
+}
+.nav-link {
+    font-size: 16px;
+}
+.dropdown-item {
+    font-size: 14px;
+}
+.container {
+    justify-content: center;
+} 
+.sticky {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
+}
+.content {
+    padding: 16px;
+}
+.sticky + .content {
+    padding-top: 40px;
+}
+.navbar-logo-p-tag{
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.navbar-login-btn {
+    padding-right: 5px;    
+    font-size: 16px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-logout-btn {
+    display: none;
+    font-size: 16px;
+}
+
+#navbar-login-username {
+    border: 0.5px solid black;
+    padding: 12px;
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: rgb(154, 233, 154);
+    opacity: 0.7;    
+}
+
+/* jumbotron */
+.jumbotron {
+    background-image: url("../../images/banner.jpg");
+    background-size: cover;
+    color: #dbdbdb;    
+}
+
+.index-jumbotron-h1 {
+    font-size: 3vw;
+    text-align: center;
+    margin: 0.5vw;
+}
+
+.index-jumbotron-p {
+    font-size: 1.5vw;
+    text-align: center;
+    margin: 0.5vw;
+    line-height: 1.2em;
+}
+
+.index-jumbotron-hr {
+    border-color: white;
+}
+
+.jumbotron-channel-col {
+    justify-content: center;
+    display: flex;        
+}
+
+.btn-jumbotron-sangdam {
+    font-size: 0.7vw;
+    border-color: white;
+    color: white;
+    margin-right: 1vw;
+}
+
+.btn-jumbotron-kakao {
+    font-size: 0.7vw;
+    border-color: yellow;
+    color: yellow;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.btn-jumbotron-telegram {
+    font-size: 0.7vw;
+    border-color: rgb(68, 200, 249);
+    color: rgb(68, 200, 249);
+    margin-left: 1vw;
+}
+
+/* Footer */
+
+.container-kakaomap{
+    justify-content: center;
+    display: flex;
+}
+
+.footer-link {
+    color: white;
+    font-size: .8vw;
+}
+
+a.footer-link:hover {
+    color: rgb(152, 148, 148);
+}
+
+.footer-col-info {
+    padding-top: 3.5vw;
+    font-size: 0.8vw;
+    justify-content: center;
+    display: flex;
+}
+.footer-hr {
+    border-color: white;
+}
+
+.footer-logo {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 2vw;
+}
+
+.footer-phr{
+    color: white;
+    font-size: 0.6vw;
+}
+
+.footer-col-about {
+    font-size: 0.8vw;
+    justify-content: center;
+    display: flex;
+}
+
+/* css for sticky footer in base.html*/
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
+/* login css */
+
+.container-login {    
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: white;
+}
+.form-signin {    
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;    
+}
+.form-signin .checkbox {
+    font-weight: 400;
+}
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* lawyer.html */
+
+.profile-span {
+	margin-left: 0em;	
+	font-size: 10.5px;
+}
+
+/* blog index.html */
+
+.blog-main-container {
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.blog-sidebar-menu {
+    font-size: 1vw;
+}
+
+.blog-sidebar-summary {
+    margin-left: 0.15rem;
+}
+
+.blog_info {
+    font-size: 0.5em;    
+    color: rgb(201, 210, 201);    
+}
+
+.blog-posted-article {
+    padding-top: 2em;
+    border: 0.5px solid rgb(193, 188, 188);
+    border-radius: 0.2rem;
+}
+
+.blog_title {
+    font-size: 0.8em;
+    line-height: 1.1em;
+    text-align: justify;
+}
+
+.blog_body {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+
+.blog_googledocs_embed{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media screen and (min-width:460px) {
+    .card-deck-component {
+        flex-direction: row;
+    }
+}
+
+/* blog post page */
+
+.blog-hero {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    max-width: 100%;    
+    position: relative;     
+}
+
+.blog-hero::before {    
+    background-image: url(https://live.staticflickr.com/7360/26474986883_931e5a913c_w.jpg); /* image size 400*276 */
+    background-size: cover;                    
+    content: "";
+    display: block;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.4;    
+}
+
+.blog-hero::after {
+    background-color: #797777;
+    content: "";
+    display: block;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.blog-hero-message {
+    color: rgb(235, 225, 225);
+    text-shadow: #343a40 0.5px 0.5px;
+    min-width: 100%;
+    min-height: 12em;
+    position: relative;
+    padding-top: 200px;
+    padding-bottom: 200px;       
+}
+
+.blog-hero-message::before {
+    content: "";
+    display: block;
+    position: absolute;
+    margin-left: 0;
+    min-width: 100%;
+    min-height: 12em;    
+    z-index: -1;
+    opacity: 0.4;
+    background-color: #343a40;
+}
+
+.blog-hero-title,
+.blog-hero-subtitle,
+.blog-hero-title-tag {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.blog-hero-title {
+    margin: 3% 0;
+    text-transform: uppercase;
+    font-size: 20px;    
+}
+
+.blog-hero-title-tag {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.not-blog-hero {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 7%;
+    margin-right: 7%;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: justify;
+}
+
+.blog-post-overay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-post-overay-btm {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.blog-post-overay:hover .blog-post-img{
+    opacity: 0.5;
+}
+
+.blog-post-overay:hover .blog-post-overay-btm{
+    opacity: 1;
+}
+
+.blog-post-img {
+    border: 1px solid rgb(174, 172, 172) ;    
+    margin-left: auto;
+    margin-right: auto;    
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden; 
+    
+}
+
+.blog-post-img-caption {
+    background-color: rgb(4, 4, 4);
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 35px;
+}
+
+    /* start of media query for hero image */
+
+@media screen and (min-width:320px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_931e5a913c_w.jpg); /* image size 400*276 */
+    }
+}    
+
+@media screen and (min-width:460px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_931e5a913c.jpg); /* image size 500*333 */
+    }
+}    
+
+@media screen and (min-width:720px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_931e5a913c_c.jpg); /* image size 800*533 */
+    }
+}    
+
+@media screen and (min-width:980px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_931e5a913c_b.jpg); /* image size 1024*683 */
+    }
+}
+
+@media screen and (min-width:1240px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_9b0bd78c80_h.jpg); /* image size 1600*1066 */
+    }
+}
+
+@media screen and (min-width:1500px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_9b0bd78c80_h.jpg); /* image size 1600*1066 */
+    }
+}
+
+@media screen and (min-width:1760px) {
+    .blog-hero::before {
+        background-image: url(https://live.staticflickr.com/7360/26474986883_81b95bf758_k.jpg); /* image size 2048*1365 */
+    }
+}
+
+    /* end of media query for hero image */
+
+.blog_post_01_background_img {
+    opacity: 0.5;
+    background-size: cover;
+}
+
+.blog_post_title{
+    color: black;
+    font-size: 2rem;
+    opacity: 1;
+}
+
+.blog_post_body{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
