@@ -45,26 +45,7 @@
       console.log(temp_html)
     $('#blog_posting').append(temp_html);
   }    
-
-  function posting() {
-      $.ajax({
-      type : 'GET',
-      url : '/blog/get_post',
-      headers : {'token_give' : getCookie('mytoken')},
-      data : {},
-      success : function(response) {
-          if (response['result'] == 'success') {
-          document.getElementById("login_userinfo").innerHTML=response['username'];												
-          } 
-      }     
-      })
-  }
   
-  function logout(){
-      setCookie('mytoken', "");
-      alert('로그아웃!')
-      window.location.href='/auth/login'
-  }        
 </script>
 {% endblock %}
 

@@ -33,9 +33,9 @@
             load_user_info()
           }
           else {
-            $("#navbar-login-username").css('display', 'none');
-            $("#navbar_logout_btn").css('display', 'none');            
+            $("#navbar-login-username").css('display', 'none');            
             $("#navbar_login_btn").css('display', 'inline-block');          
+            $("#navbar_logout_btn").css('display', 'none');            
           }
         });
       
@@ -103,7 +103,7 @@
               <a class="nav-link" href="#">온라인 법률상담</a>
             </li>
           </ul>  
-            <p id="navbar-login-username"></p>            
+            <p id="navbar-login-username">{{ username }}</p>            
             <a id="navbar_login_btn" class="btn btn-outline-success my-2 my-sm-0 navbar_login_btn" href="{{ url_for('auth.login') }}" role="button">LOGIN</a>        
             <a id="navbar_logout_btn"class="btn btn-outline-success my-2 my-sm-0 navbar_logout_btn" href="{{ url_for('auth.logout') }}" role="button" onclick="logout()">LOGOUT</a>        
         </div>

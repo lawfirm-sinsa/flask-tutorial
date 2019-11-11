@@ -1,65 +1,52 @@
 {% extends 'base.html' %}
 
-{% block script %}
+{% block script_one %}
 
-		<script>
-			function signup() {
-				// read name, email, password
-				let username = $('#inputName').val();				
-				let email = $('#inputEmail').val();
-				let password = $('#inputPassword').val();
-				console.log(username,email,password)
-				// ajax 
-				$.ajax ({
-					type : "POST",
-					url : "/auth/register",
-					data : {
-						username_give : username,						
-						email_give : email,
-						password_give : password},
-					success: function (response) {
-						if(response['result']=='success'){
-              alert('회원가입을 축하드립니다')
-              window.location.href = '/auth/login'
-            }					
-					}
-				})	
-			}			
-		</script>
+<script>
+	function signup() {
+		// read name, email, password
+		let username = $('#inputName').val();				
+		let email = $('#inputEmail').val();
+		let password = $('#inputPassword').val();
+		console.log(username,email,password)
+		// ajax 
+		$.ajax ({
+			type : "POST",
+			url : "/auth/register",
+			data : {
+				username_give : username,						
+				email_give : email,
+				password_give : password},
+			success: function (response) {
+				if(response['result']=='success'){
+				swal('회원가입을 축하드립니다')
+				window.location.href = '/auth/login'
+				}					
+			}
+		})	
+	}			
+</script>
 		
 {% endblock %}
 
-{% block body_content %}
-			
-		<!-- Banner -->
-		<section id="banner">
-			<h1>LAWFIRM DISCOVERY</h1>
-			<p>Discovery Evidence & Depend Your Right</p>
-		</section>
-			
-		<!-- login section -->
-			<div class="container">			  
-        <div class="login d-flex align-items-center py-5 loginMainDiv">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">회원가입</h3>			            
-							  <div class="form-label-group">
-								<input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
-								<label for="inputfirst_name">Name</label>
-              </div>						
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputEmail">Email address</label>
-              </div>
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
-              </div>			                  	                
-                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signup()">Sign up</button> 
-              </div>			                  
-            </div>
-          </div>
-        </div>			      
-			</div> 
+{% block body_content %}				
+
+<!-- signup section -->
+<div class="container container-login">      
+	<div class="form-signin text-center col-md-9 col-lg-8 col-xl-7 mx-auto">
+		<img class="mb-4" src="{{ url_for('static', filename='images/sample_logo.svg') }}" alt="법률사무소 디스커버리 로고" width="40" height="40">
+		<h1 class="h3 mb-3 font-weight-normal">회원가입을 해주세요!</h1>		
+		<label for="inputName" class="sr-only">이름</label>
+		<input type="text" id="inputName" class="form-control" placeholder="이름" required autofocus>		
+		<label for="inputEmail" class="sr-only">이메일 주소</label>
+		<input type="email" id="inputEmail" class="form-control" placeholder="이메일 주소" required autofocus>
+		<label for="inputPassword" class="sr-only">비밀번호</label>
+		<input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>		
+		<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onclick="signup()">회원가입</button> 
+		<p>By clicking “Sign up”, you agree to our terms of service, privacy policy and cookie policy</p>
+		<p class="mt-5 mb-3 text-muted">&copy; 2019 | LAWFIRM DISCOVERY</p>
+	</div>      
+</div>			
+
 {% endblock %}
+  
